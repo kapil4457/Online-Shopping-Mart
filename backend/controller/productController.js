@@ -7,7 +7,8 @@ exports.getAllProduct = (async (req, res, next) => {
     try{
 
         let products = await Product.find();
-        res.status(200).json({ success: true, products });
+		const productCount = Product.countDocuments();
+        res.status(200).json({ success: true,  products,productCount });
     }catch(err){
         console.log(err.message)
     }
@@ -16,9 +17,9 @@ exports.getAllProduct = (async (req, res, next) => {
 
 exports.getAdminProduct = async (req, res, next) => {
 try{
-    let products = await Product.find({listedBy:req.user.id});
+    let data = await Product.find({listedBy:req.user.id});
 
-    res.status(200).json({success:true , products });
+    res.status(200).json({success:true , products:data });
 }catch(error){
     console.log(error.message);
 }

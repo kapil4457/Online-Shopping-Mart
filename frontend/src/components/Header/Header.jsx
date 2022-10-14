@@ -12,11 +12,12 @@ const Header = () => {
     <div className="main-header">
       <div className="first-part">
         <NavLink to="/" className="left">
-          <div>
+          <img src="main-logo.png" alt="" />
+          {/* <div>
             <LocalMallIcon />
             <span>Kharido</span>
           </div>
-          <p>Jee Bhar K</p>
+          <p>Jee Bhar K</p> */}
         </NavLink>
 
         <div className="right">

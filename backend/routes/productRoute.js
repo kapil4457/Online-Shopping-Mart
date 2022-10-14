@@ -8,6 +8,12 @@ const {
 	deleteProduct,
 	getProductDetails,
 	getAdminProduct,
+	getlatestAppliances,
+	getAllTelevisions,
+	getClothing,
+	getDealsOfTheDay,
+	getProductsKitchenUnder,
+	getDeo
 } = require("../controller/productController");
 
 
@@ -19,6 +25,12 @@ module.exports = router;
 
 
 router.route("/products").get(getAllProduct);
+router.route("/products/latest").get(getlatestAppliances);
+router.route("/products/television").get(getAllTelevisions);
+router.route("/products/clothing").get(getClothing);
+router.route("/products/dealOfTheDay").get(getDealsOfTheDay);
+router.route("/products/kitchen/under399").get(getProductsKitchenUnder);
+router.route("/products/deo").get(getDeo);
 router.route("/admin/products").get(isAuthenticatedUser , authorizeRole("admin"),getAdminProduct);
 router.route("/getProductDetails/:id").get(getProductDetails);
 router.route("/admin/createProduct").post(isAuthenticatedUser , authorizeRole("admin"),createProduct);

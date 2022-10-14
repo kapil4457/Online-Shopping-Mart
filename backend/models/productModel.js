@@ -35,6 +35,10 @@ const productSchema =new mongoose.Schema({
         type:String,
         required:[true,"Please Enter Product Category"]
     },
+    subCategory:{
+        type:String,
+        required:[true,"Please Enter Product Sub Category"]
+    },
     Stock:{
         type:Number,
         required:[true , "Please enter product Stock"],
@@ -57,7 +61,8 @@ const productSchema =new mongoose.Schema({
         type:mongoose.Schema.ObjectId,
         ref:"User",
         required:true, 
-    }
+    },
+    dealOfTheDay:false,
 })
 
 module.exports = mongoose.model("Product" ,productSchema )

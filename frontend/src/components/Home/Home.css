@@ -11,7 +11,7 @@
 }
 
 
-.latest-appliances , .mens-fashion{
+.latest-appliances , .mens-fashion , .womens-store , .deals-on-beauty{
     width:30rem;
     height:24rem;
     /* border:1px solid black; */
@@ -25,16 +25,16 @@
 
 }
 
-.latest-appliances > .heading , .mens-fashion >.heading{
+.latest-appliances > .heading , .mens-fashion >.heading , .womens-store>.heading , .deals-on-beauty > .heading{
     width:100%;
     text-align: center;
 }
 
-.latest-appliances >.appliances-category >a , .mens-fashion >.categories >a{
+.latest-appliances >.appliances-category >a , .mens-fashion >.categories >a , .womens-store >.womens-clothing >a , .deals-on-beauty > .womens-clothing > a{
     text-decoration: none;
     color:black;
 }
-.latest-appliances > .appliances-category{
+.latest-appliances > .appliances-category , .womens-clothing{
     display:grid;
     grid-template-columns: 1fr 1fr;
     gap:1rem;
@@ -87,15 +87,29 @@
 
 .slider > .swiper{
     height:90%;
-    width:80%;
+    width:78%;
     box-shadow:0 0px 10px rgba(0,0,0,0.7);
     border-radius:5px;
 }
 
 .small-card{
     height:100%;
-    width:100%;
+    width:18rem;
     display:flex;
     justify-content: center;
     align-items: center;
+}
+
+.block-buster , .kitchen-items {
+    display:flex;
+    gap:2rem;
+    flex-direction: column;
+    margin-bottom: 4rem;
+}
+
+.block-buster >h2 , .kitchen-items>h2{
+    padding-left:13rem;
+    font-size:1.9rem;
+    text-decoration: underline;
+    
 }

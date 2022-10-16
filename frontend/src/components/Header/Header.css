@@ -11,6 +11,7 @@
 
 }
 
+
 .main-header > .first-part{
     height:70%;
     padding:0 5rem;
@@ -28,6 +29,9 @@
     width:10%;
     flex-direction: column;
     color:rgba(247, 23, 23, 0.9);
+    
+
+
     
 }
 
@@ -186,7 +190,7 @@ width:100%;
         transform: translateY(-0.5rem) ;
     }
     90%{
-        transform: translateY(0rem) ;
+        transform: translateY(-0.3rem) ;
     }
     100%{
         transform: translateY(0rem) ;

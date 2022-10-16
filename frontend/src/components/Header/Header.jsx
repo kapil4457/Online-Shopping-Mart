@@ -1,11 +1,9 @@
 import React from "react";
 import "./Header.css";
-import LocalMallIcon from "@mui/icons-material/LocalMall";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import GavelOutlinedIcon from "@mui/icons-material/GavelOutlined";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
 
 const Header = () => {
   return (
@@ -13,11 +11,6 @@ const Header = () => {
       <div className="first-part">
         <NavLink to="/" className="left">
           <img src="main-logo.png" alt="" />
-          {/* <div>
-            <LocalMallIcon />
-            <span>Kharido</span>
-          </div>
-          <p>Jee Bhar K</p> */}
         </NavLink>
 
         <div className="right">

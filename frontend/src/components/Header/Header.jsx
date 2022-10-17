@@ -1,13 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import GavelOutlinedIcon from "@mui/icons-material/GavelOutlined";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const [color, setColor] = useState(
+    "linear-gradient(to bottom , rgba(44, 44, 44, 0.5), rgba(44,44,44,0)  )"
+  );
+
+  const navigate = useNavigate();
+
+  const [searchItem, setSearchItem] = useState("");
+
+  const scrollNavBar = () => {
+    if (document.documentElement.scrollTop > 100) {
+      setColor("rgba(0,0,0,0.6");
+    } else {
+      setColor(
+        "linear-gradient(to bottom , rgba(44, 44, 44, 0.5), rgba(44,44,44,0)  )"
+      );
+    }
+  };
+  window.onscroll = () => {
+    scrollNavBar();
+  };
+
+  const sendRequest = () => {
+    if (searchItem === "") {
+      window.alert("Please Enter Something to Search");
+      return;
+    } else {
+      navigate(`/products/${searchItem}`);
+    }
+  };
+
   return (
-    <div className="main-header">
+    <div
+      className="main-header"
+      style={{
+        background: `${color}`,
+      }}
+    >
       <div className="first-part">
         <NavLink to="/" className="left">
           <img src="main-logo.png" alt="" />
@@ -16,8 +51,16 @@ const Header = () => {
         <div className="right">
           <div className="main-bar">
             <div className="search-bar">
-              <input type="text" placeholder="Search Items" />
-              <SearchOutlinedIcon />
+              <input
+                type="text"
+                placeholder="Search Items"
+                value={`${searchItem}`}
+                onChange={(e) => setSearchItem(e.target.value)}
+              />
+              <SearchOutlinedIcon
+                onClick={sendRequest}
+                style={{ cursor: "pointer" }}
+              />
             </div>
           </div>
 

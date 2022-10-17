@@ -14,41 +14,33 @@ exports.getAllProduct = (async (req, res, next) => {
     }
 });
 
-exports.getlatestAppliances=async(req,res,next)=>{
-	try{
-		let tele = await Product.find({category:'Television'}).skip(Product.count()-8);
-		let refri = await Product.find({category:'Refrigerator'}).skip(Product.count()-8);
-		let ac = await Product.find({category:'Air Conditioner'}).skip(Product.count()-8);
-		let micro = await Product.find({category:'Microwave'}).skip(Product.count()-8);
-		await res.status(200).send({ success: true,tele , refri ,ac ,micro});
 
-	}catch(err){
-		await res.status(500).json({success: false, message: err.message});
-	}
+
+
+
+exports.getList = async(req,res,next)=>{
+try{
+	const temp = await Product.find();
+	let products = [];
+	let name = await req.params.name.toLowerCase();
+	  temp.forEach(async(product)=>{
+		let category =  product.category.toLowerCase();
+	let subCategory =  product.subCategory.toLowerCase();
+	let description =  product.description.toLowerCase();
+	let nameOfProduct =  product.name.toLowerCase();
+   if(  category.includes(`${name}`) ||  subCategory.includes(`${name}`) || description.includes(`${name}`) || nameOfProduct.includes(`${name}`) ||    name.includes(`${category}`) ||  name.includes(`${subCategory}`) || name.includes(`${description}`) || name.includes(`${nameOfProduct}`) ){
+	   products.push(product);
+   }
+	})
+
+	await res.status(200).send({success: true, products})
+
+
+}catch(err){
+	res.status(404).send({ success: false, message : err.message })
+}
 }
 
-
-exports.getAllTelevisions = async(req,res,next)=>{
-	try{
-
-		let products = await Product.find({categery : 'Television'});
-		await res.status(200).send({ success: true,products});
-
-	}catch(err){
-		await res.status(500).json({success: false, message: err.message});
-
-	}
-}
-
-exports.getClothing =async(req,res,next)=>{
-	try{
-		let products = await Product.find({categery : 'Clothing'});
-		await res.status(200).send({ success: true,products});
-	}catch(err){
-		await res.status(500).json({success: false, message: err.message});
-
-	}
-}
 
 
 exports.getDealsOfTheDay = async(req,res,next)=>{
@@ -72,14 +64,6 @@ exports.getProductsKitchenUnder = async(req,res,next)=>{
 }
 
 
-exports.getDeo = async(req,res,next)=>{
-	try{
-const products = await Product.find({category:"Deo"});
-await res.status(200).json({success: true, products});
-	}catch(err){
-		await res.status(500).json({success: false, message: err.message});	
-	}
-}
 exports.getAdminProduct = async (req, res, next) => {
 try{
     let data = await Product.find({listedBy:req.user.id});

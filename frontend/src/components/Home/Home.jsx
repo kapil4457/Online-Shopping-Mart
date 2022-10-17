@@ -8,49 +8,28 @@ import Slider from "./Slider";
 
 const Home = () => {
   const [AllProducts, setAllProducts] = useState([]);
-  const [latestPoster, setLatestPoster] = useState([]);
-  const [smartTv, setSamrtTv] = useState([]);
-  const [clothing, setClothing] = useState([]);
   const [BlockBuster, setBlockBuster] = useState([]);
   const [kitchen, setKitchen] = useState([]);
-  const [deo, setDeo] = useState([]);
 
-  const fetchAllProducts = async () => {
-    const Allproducts = await axios.get("/api/v1/products");
-    setAllProducts(Allproducts.data.products);
-  };
-
-  // const fetchSmartTV = async () => {
-  //   const temp = await axios.get("/api/v1/products/television");
-  //   setSamrtTv(temp.data.products);
-  // };
-
-  // const fetchClothing = async () => {
-  //   const temp = await axios.get("/api/v1/products/clothing");
-  //   setClothing(temp.data.products);
-  // };
   const getDealsofTheday = async () => {
     const temp = await axios.get("/api/v1/products/dealOfTheDay");
     setBlockBuster(temp.data.products);
     console.log(BlockBuster);
+  };
+  const fetchAllProducts = async () => {
+    const Allproducts = await axios.get("/api/v1/products");
+    setAllProducts(Allproducts.data.products);
   };
 
   const getKitchenProductsUnder399 = async () => {
     const temp = await axios.get("/api/v1/products/kitchen/under399");
     setKitchen(temp.data.products);
   };
-  // const getDeo = async () => {
-  //   const temp = await axios.get("/api/v1/products/deo");
-  //   setDeo(temp.data.products);
-  // };
 
   useEffect(() => {
     fetchAllProducts();
-    // fetchSmartTV();
-    // fetchClothing();
     getDealsofTheday();
     getKitchenProductsUnder399();
-    // getDeo();
   }, []);
 
   return (
@@ -62,7 +41,7 @@ const Home = () => {
             Upto 70% off | Upgrade to the latest Appliance
           </h2>
           <div className="appliances-category">
-            <NavLink to="/products/Washing-Machine" className="refrigerator">
+            <NavLink to="/products/WashingMachine" className="refrigerator">
               <img src="washing.jpg" alt="washing machine" />
               <p>Front Loads | Upto 60% off</p>
             </NavLink>
@@ -121,19 +100,19 @@ const Home = () => {
         <div className="womens-store">
           <h2 className="heading">Starting 199 | Women's Fashion</h2>
           <div className="womens-clothing">
-            <NavLink to="/products/Womens-Clothing" className="W-clothing">
+            <NavLink to="/products/WomensClothing" className="W-clothing">
               <img src="w1.jpg" alt="kurti" />
               <p>Womens Clothing</p>
             </NavLink>
-            <NavLink to="/products/Women-BackPack" className="WBackpack">
+            <NavLink to="/products/WomenBackPack" className="WBackpack">
               <img src="w2.jpg" alt="W-BackPack" />
               <p>BackPack</p>
             </NavLink>
-            <NavLink to="/products/Women-Beauty" className="WBeauty">
+            <NavLink to="/products/WomenBeauty" className="WBeauty">
               <img src="w3.jpg" alt="W-Beauty " />
               <p>Beauty</p>
             </NavLink>
-            <NavLink to="products/Women-Jewellery" className="WJewellery">
+            <NavLink to="products/WomenJewellery" className="WJewellery">
               <img src="w4.jpg" alt="W-Jewellery" />
               <p>Fashion Jewellery</p>
             </NavLink>

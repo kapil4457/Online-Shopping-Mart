@@ -10,6 +10,7 @@ export default function BtnSlider({ direction, moveSlide }) {
       className={direction === "next" ? "next btn-slide" : "btn-slide prev"}
     >
       <img src={direction === "next" ? rightArrow : leftArrow} />
+    
     </button>
   );
 }

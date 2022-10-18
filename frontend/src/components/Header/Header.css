@@ -53,24 +53,23 @@
 }
 
 .right >.main-bar> .search-bar{
-    border-radius:30px;
+    border-radius:10px;
     height:3rem;
-    width:3rem;
     display:flex;
     align-items: center;
     justify-content: center;
     color:white;
     background-color:rgb(206, 98, 48);
-    padding:0 1rem;
+    padding-left:1rem;
     transform :translateY(-10rem) ;
-    animation: prakatSymbol 3s ease-in-out 2.5s 1 normal forwards , symbolShadow 2s ease-in-out 5s 1 normal forwards;
+    box-shadow:0px 0px 10px rgb(206, 98, 48);
+    border:none;
+    animation: prakatSymbol 2s ease-in-out 1.5s 1 normal forwards , symbolShadow 2s ease-in-out 5s 1 normal forwards;
+    gap:1rem;
 
 
 
 }
-
-
-
 
 .main-bar{
     margin-right:3rem;
@@ -80,36 +79,39 @@
     align-items: center;
     justify-content: center;
 }
-.right > .main-bar>.search-bar{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow:0px 0px 10px rgb(206, 98, 48);
-    gap:1rem;
-    
-    
-}
+
+
 .right > .main-bar>.search-bar>input{
-    width:20rem;
-    display:none;
+    width:30rem;
     height:2rem;
     background:transparent;
     outline:none;
     border:none;
     font-size: 1.4rem;
-    /* animation: prakatInput 1s step-start  1 normal both; */
-    width:1rem;
     color:white;
     
 }
+.right > .main-bar>.search-bar >div{
+    height:100%;
+    width:3rem;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:0px 10px 10px 0px;
+    border-left:1px solid white;
+    /* background-color:rgb(228, 87, 22); */
+    animation: searchUp 2s ease-in-out 5s 1 normal forwards , symbolShadow 2s ease-in-out 5s 1 normal forwards;
 
-.right > .main-bar>.search-bar:hover{
-    /* width:100%; */
+
 }
 
-.right >.main-bar>.search-bar:hover > input{
-    /* display: block; */
+
+
+.right > .main-bar>.search-bar >div>svg{
+    color:white;
+
 }
+
 
 
 .right > .my-orders , .right >.cart {
@@ -123,8 +125,7 @@ gap:0.4rem;
 height:3rem;
 border-radius:10px;
 background-color:rgb(206, 98, 48);
-/* box-shadow:0px 0px 10px black; */
-box-shadow:0px 0px 10px rgb(206, 98, 48);;
+box-shadow:0px 0px 8px rgb(206, 98, 48);;
 padding:0 1rem;
 font-size:1rem;
 font-weight:600;
@@ -181,6 +182,92 @@ width:100%;
     align-items:center;
 }
 
+
+
+
+
+/* CSS for the side header */
+.side-header{
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    border:1px solid white;
+    z-index:999999;
+    width:25%;
+    background-color:white;
+    transform:translateX(-35rem);
+}
+
+.side-header > div>.account{
+    
+    height:4rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(35,47,62);
+    
+}
+
+.side-header > div>.account > p{
+    font-weight: 650;;
+    font-size:1.5rem;
+    color:white;
+}
+
+.side-header  > div>.options{
+    height:100%;
+    /* background-color: rgb(19,25,33); */
+    padding: 2rem;
+    display:flex;
+    flex-direction:column;
+    gap:2rem;
+}
+.side-header  > div>.options >div{
+    display:flex;
+    flex-direction: column;
+    gap:0.6rem;
+}
+.side-header  >div> .options >div> .item-header{
+    /* color:white; */
+    font-weight:550;
+    font-size:2rem;
+
+}
+
+.side-header  >div> .options >div>.item-sub-header{
+    font-size:1.2rem;
+    font-weight:550;
+    color:rgba(0,0,0,0.6);
+    /* color:rgb(214, 168, 168); */
+}
+
+.side-header  > div>.options >div::after{
+    content:"";
+    width:100%;
+    height:2px;
+    background-color:rgba(0,0,0,0.5);
+    
+}
+
+.side-header > .cross{
+    position:absolute;
+    right:-3rem;
+    top:1rem;
+    color:white;
+}
+
+.side-header > .cross>svg{
+    font-size:2.5rem;
+    cursor:pointer;
+}
+
+.translateXNegative{
+    transform:translateX(-35rem);
+}
+.translateXPositive{
+    transform:translateX(0rem);
+}
 
 @keyframes prakatInput {
     10%{
@@ -251,5 +338,12 @@ transform: translateY(0rem);
 @keyframes symbolShadow {
     100%{
         box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+    }
+}
+
+@keyframes searchUp {
+    100%{
+            background-color:rgb(228, 87, 22);
+
     }
 }

@@ -1,6 +1,10 @@
 *{
   padding:0;
   margin:0;
+  border:none;
+  outline:none;
+  box-sizing: border-box;
+transition: all 0.7s;
 }
 
 body {

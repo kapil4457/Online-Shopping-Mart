@@ -4,28 +4,11 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import GavelOutlinedIcon from "@mui/icons-material/GavelOutlined";
 import { NavLink, useNavigate } from "react-router-dom";
-
+import MenuIcon from "@mui/icons-material/Menu";
 const Header = () => {
-  const [color, setColor] = useState(
-    "linear-gradient(to bottom , rgba(44, 44, 44, 0.5), rgba(44,44,44,0)  )"
-  );
-
   const navigate = useNavigate();
 
   const [searchItem, setSearchItem] = useState("");
-
-  const scrollNavBar = () => {
-    if (document.documentElement.scrollTop > 100) {
-      setColor("rgba(0,0,0,0.6");
-    } else {
-      setColor(
-        "linear-gradient(to bottom , rgba(44, 44, 44, 0.5), rgba(44,44,44,0)  )"
-      );
-    }
-  };
-  window.onscroll = () => {
-    scrollNavBar();
-  };
 
   const sendRequest = () => {
     if (searchItem === "") {
@@ -37,15 +20,10 @@ const Header = () => {
   };
 
   return (
-    <div
-      className="main-header"
-      style={{
-        background: `${color}`,
-      }}
-    >
+    <div className="main-header">
       <div className="first-part">
         <NavLink to="/" className="left">
-          <img src="main-logo.png" alt="" />
+          <img src="logo2.png" alt="" />
         </NavLink>
 
         <div className="right">
@@ -78,8 +56,18 @@ const Header = () => {
         </div>
       </div>
       <div className="second-part">
-        <div className="all"></div>
-        <div className="other-options"></div>
+        <div className="all">
+          <MenuIcon />
+          <p>All</p>
+        </div>
+        <div className="other-options">
+          <NavLink to="/products/Mobiles">Mobile</NavLink>
+          <NavLink to="/products/Kids">Kids</NavLink>
+          <NavLink to="/products/Sports">Sports</NavLink>
+          <NavLink to="/products/Kitchen">Kitchen</NavLink>
+          <NavLink to="/products/Fashion">Fashion</NavLink>
+          <NavLink to="/products/Books">Books</NavLink>
+        </div>
       </div>
     </div>
   );

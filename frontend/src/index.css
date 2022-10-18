@@ -20,12 +20,13 @@ code {
 
 a{
   text-decoration:none;
-color:rgba(0, 0, 0, 0.5);
+/* color:rgba(0, 0, 0, 0.5); */
+color:white;
 
 }
 .active{
   /* color:rgba(0,0,0,0.9); */
-  color:white;
+  color:rgb(224, 37, 37);
 }
 
 ::placeholder{

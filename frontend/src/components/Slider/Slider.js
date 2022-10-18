@@ -38,7 +38,7 @@ const navigate = useNavigate();
                         src="black.jpg" 
                         style={{cursor:"pointer"}}
                         onClick={()=>{
-                            navigate(`/products/${obj._id}`)
+                            navigate(`/products/item/${obj._id}`)
                         }}
                         />
                     </div>

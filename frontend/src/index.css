@@ -25,12 +25,14 @@ code {
 a{
   text-decoration:none;
 /* color:rgba(0, 0, 0, 0.5); */
-color:white;
+color:rgba(218, 195, 195,0.6);
 
 }
 .active{
   /* color:rgba(0,0,0,0.9); */
-  color:black;}
+  /* color:rgb(9, 13, 75);} */
+  color:white
+}
 
 ::placeholder{
   color:white;

@@ -4,7 +4,7 @@
   border:none;
   outline:none;
   box-sizing: border-box;
-transition: all 0.7s;
+/* transition: all 0.7s; */
 }
 
 body {
@@ -30,8 +30,7 @@ color:white;
 }
 .active{
   /* color:rgba(0,0,0,0.9); */
-  color:rgb(224, 37, 37);
-}
+  color:black;}
 
 ::placeholder{
   color:white;

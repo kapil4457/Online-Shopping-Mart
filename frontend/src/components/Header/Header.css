@@ -197,6 +197,7 @@ width:100%;
     width:25%;
     background-color:white;
     transform:translateX(-35rem);
+    transition:all 0.7s;
 }
 
 .side-header > div>.account{

@@ -1,0 +1,7 @@
+.loader{
+    height:90vh;
+    background-color: rgb(160,39,177);
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}

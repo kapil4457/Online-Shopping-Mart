@@ -239,6 +239,7 @@ width:100%;
 .side-header  >div> .options >div>.item-sub-header{
     font-size:1.2rem;
     font-weight:550;
+    color:gray;
 }
 
 .side-header  > div>.options >div::after{

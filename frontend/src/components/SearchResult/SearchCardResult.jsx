@@ -17,7 +17,7 @@ const SearchCardResult = ({ data }) => {
           <p>₹ {data.price}</p>
         </div>
 
-        <NavLink to="/">Details</NavLink>
+        <NavLink to={`/products/item/${data._id}`}>Details</NavLink>
       </div>
     </>
   );

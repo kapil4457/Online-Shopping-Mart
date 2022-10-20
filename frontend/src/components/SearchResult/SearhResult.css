@@ -23,7 +23,7 @@ flex-direction:column;
     gap:0.5rem;
     width:100%;
     padding:2rem 2rem;
-    color:rgba(0,0,0,0.7)
+    color:rgba(0,0,0,0.7);
 }
 
 
@@ -39,12 +39,42 @@ font-weight:550;
 }
 
 
+.no-items{
+    height:65vh;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    font-size:3rem;
+    color:red;
+    flex-direction: column;
+    gap:2rem;
+}
+
+.no-items > button{
+border:1px solid blue;
+cursor:pointer;
+height:3rem;
+border-radius:10px;
+width:10rem;
+color:blue;
+transition:all 0.3s;
+font-weight: 550;
+}
+
+.no-items > button:hover{
+border:none;
+background-color: blue;
+color:white;
+}
+
+
 .searchResultCard{
     width:100%;
     padding:1rem 0;
     display:grid;
     grid-template-columns: repeat(3,1fr);
-    row-gap: 2rem;
+
 }
 
 .main-search-page > .filters{

@@ -11,6 +11,7 @@ const {
 	getList,
 	getDealsOfTheDay,
 	getProductsKitchenUnder,
+	getLatest,
 } = require("../controller/productController");
 
 
@@ -25,6 +26,7 @@ router.route("/products").get(getAllProduct);
 router.route("/products/dealOfTheDay").get(getDealsOfTheDay);
 router.route("/products/kitchen/under399").get(getProductsKitchenUnder);
 router.route("/products/search/:name").get(getList)
+router.route("/products/getLatest").get(getLatest)
 router.route("/admin/products").get(isAuthenticatedUser , authorizeRole("admin"),getAdminProduct);
 router.route("/getProductDetails/:id").get(getProductDetails);
 router.route("/admin/createProduct").post(isAuthenticatedUser , authorizeRole("admin"),createProduct);

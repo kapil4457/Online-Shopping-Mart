@@ -210,3 +210,15 @@ exports.getProductDetails = (async (req, res, next) => {
 		await res.status(500).json({success: false, message: err.message});
     }
 });
+
+
+exports.getLatest = async(req,res,next)=>{
+	try{
+		const products = await Product.find({id:-1}).limit(20);
+		await res.status(200).send({success:true , products});
+		return
+
+	}catch(err){
+		res.status(500).json({success:false , message : err.message}); 
+	}
+}

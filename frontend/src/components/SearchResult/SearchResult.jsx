@@ -12,25 +12,32 @@ const SearchResult = () => {
   const [allBrands, setAllBrands] = useState();
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(Number(99999));
+  const [brandFilter, setBrandFilter] = useState("");
   const getData = async () => {
     const temp = await axios.get(`/api/v1/products/search/${params.name}`);
     setData(temp.data.products);
   };
 
   const filterBrands = () => {
-    const allBrands = new Set();
+    const t1 = new Set();
 
     data.forEach((item) => {
-      allBrands.add(item.brand);
+      t1.add(item.brand);
     });
-    setAllBrands(allBrands);
+
+    const t2 = [];
+    t1.forEach((item) => {
+      t2.push({ name: item });
+    });
+
+    setAllBrands(t2);
   };
 
   useEffect(() => {
     getData();
     filterBrands();
     setLoaded("true");
-  }, [data, minPrice, maxPrice]);
+  }, [data, minPrice, maxPrice, setBrandFilter]);
   return (
     <>
       {loaded === "false" ? (
@@ -41,7 +48,7 @@ const SearchResult = () => {
         <div className="main-search-page">
           <div className="filters">
             <div className="price-range">
-              <p>Price : </p>
+              <h2>Price : </h2>
               <div className="price-meter">
                 <input
                   type="number"
@@ -57,9 +64,32 @@ const SearchResult = () => {
                 />
               </div>
             </div>
-            <div className="brand-name"></div>
+            <div className="brand-name">
+              <h2>Brands : </h2>
+              <p
+                onClick={() => {
+                  setBrandFilter("");
+                }}
+              >
+                All
+              </p>
+              {allBrands.map((item) => (
+                <p
+                  onClick={(e) => {
+                    setBrandFilter(item.name);
+                    console.log(item.name);
+                  }}
+                >
+                  {item.name}
+                </p>
+              ))}
+            </div>
           </div>
-          <SearchPageResult data={data} range={{ minPrice, maxPrice }} />
+          <SearchPageResult
+            data={data}
+            range={{ minPrice, maxPrice }}
+            brand={brandFilter}
+          />
         </div>
       )}
     </>

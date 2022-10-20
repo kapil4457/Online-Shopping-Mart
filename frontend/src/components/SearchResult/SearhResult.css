@@ -50,4 +50,46 @@ font-weight:550;
 .main-search-page > .filters{
     height:80vh;
     width:23%;
+    padding:0 1rem;
+}
+
+
+.filters > .brand-name,
+.filters > .price-range  {
+    width:100%;
+    padding: 2rem;
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+    border-bottom:1px solid gray;
+}
+
+
+.filters > .price-range > h2  ,
+.filters > .brand-name > h2{
+    font-weight:650;
+    font-size:1.5rem;
+    color:gray;
+}
+.filters > .price-range > .price-meter{
+    display:flex;
+    font-size:1.3rem;
+    color:gray;
+    gap:0.5rem;
+    
+}
+
+.filters > .price-range > .price-meter > input{
+    border:1px solid black;
+    outline:none;
+    border-radius:10px;
+    height:2rem;
+    width:8rem;
+    padding-left:0.5rem;
+}
+
+.filters > .brand-name > p{
+    cursor:pointer;
+    color:rgba(0,0,0,0.8);
+    font-weight:550;
 }

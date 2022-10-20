@@ -2,12 +2,16 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router";
 import SeearchCardResult from "./SearchCardResult.jsx";
 
-const SearchPageResult = ({ data, range }) => {
+const SearchPageResult = ({ data, range, brand }) => {
   let params = useParams();
 
   const filtering = (val) => {
     if (val.price >= range.minPrice && val.price <= range.maxPrice) {
-      return true;
+      if (brand == "") {
+        return true;
+      } else {
+        if (val.brand == brand) return true;
+      }
     }
     return false;
   };

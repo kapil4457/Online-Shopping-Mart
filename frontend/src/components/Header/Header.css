@@ -5,11 +5,7 @@
     width:100%;
     flex-direction: column;
     background-color :rgb(19,25,33);
-    /* padding:0 5rem; */
-    /* background : linear-gradient(to bottom , rgba(44, 44, 44, 0.5), rgba(44,44,44,0)  ); */
-    /* position:fixed; */
-    /* animation: loading 2s ease-in-out 0.5s 1 normal forwards; */
-    /* transform: translateY(-10rem); */
+  
     z-index:99;
     transition: all 0.5s;
 
@@ -18,7 +14,6 @@
 
 .main-header > .first-part{
     height:70%;
-    /* padding:0 5rem; */
     width:100%;
     display:flex;
     align-items:center;
@@ -99,7 +94,6 @@
     align-items:center;
     border-radius:0px 10px 10px 0px;
     border-left:1px solid white;
-    /* background-color:rgb(228, 87, 22); */
     animation: searchUp 2s ease-in-out 5s 1 normal forwards , symbolShadow 2s ease-in-out 5s 1 normal forwards;
 
 

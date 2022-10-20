@@ -6,6 +6,7 @@ import GavelOutlinedIcon from "@mui/icons-material/GavelOutlined";
 import { NavLink, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import logo from "./logo2.png";
 const sideBarHeadings = [
   {
     title: "Trending",
@@ -107,7 +108,7 @@ const Header = () => {
       <div className="main-header">
         <div className="first-part">
           <NavLink to="/" className="left">
-            <img src="logo2.png" alt="" />
+            <img src={`${logo}`} alt="" />
           </NavLink>
 
           <div className="right">

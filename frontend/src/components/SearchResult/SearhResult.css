@@ -5,3 +5,49 @@
     justify-content: center;
     align-items:center;
 }
+
+
+.main-search-page{
+    display:flex;
+}
+
+.main-search-result{
+display:flex;
+flex-direction:column;
+
+}
+
+.heading-search-result{
+    display:flex;
+    flex-direction:column;
+    gap:0.5rem;
+    width:100%;
+    padding:2rem 2rem;
+    color:rgba(0,0,0,0.7)
+}
+
+
+.heading-search-result >.main-search-result> h2{
+font-size:2.4rem;
+font-weight:550;
+
+}
+
+.heading-search-result >.main-search-result> h3{
+    font-size:1.4rem;
+    font-weight: 750;
+}
+
+
+.searchResultCard{
+    width:100%;
+    padding:1rem 0;
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    row-gap: 2rem;
+}
+
+.main-search-page > .filters{
+    height:80vh;
+    width:23%;
+}

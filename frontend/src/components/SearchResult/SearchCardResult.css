@@ -1,0 +1,55 @@
+.main-search-card{
+    width:90%;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    gap:0.5rem;
+    box-shadow:0px 5px 10px rgba(0,0,0,0.4) , 0px -2px 5px rgba(0,0,0,0.4);
+    height:28rem;
+    padding-bottom:1rem;
+    border-radius:10px;
+    
+}
+
+.main-search-card > img{
+    width:100%;
+    border-radius:10px 10px 0  0px;
+    height:60%;
+}
+
+.main-search-card > .item-name , .item-price{
+width:100%;
+display:grid;
+grid-template-columns: 1fr 1fr;
+padding:0.5rem 1rem;
+justify-content: center;
+align-items:center;
+font-size:1.3em;
+font-weight:550;
+color:gray;
+}
+
+.main-search-card > .item-name>p:nth-child(1) , .item-price>p:nth-child(1){
+font-weight: 650;
+}
+
+
+.main-search-card > a{
+    width:60%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:3rem;
+    color:rgb(80, 80, 228);
+    border-radius:20px;
+    border:1px solid rgb(80, 80, 228);
+    transition: all 0.4s;
+}
+
+.main-search-card> a:hover{
+    border:none;
+    background-color: rgb(80, 80, 228);
+    color:white;
+    box-shadow:0 5px 10px rgba(80, 80, 228,0.5);
+}

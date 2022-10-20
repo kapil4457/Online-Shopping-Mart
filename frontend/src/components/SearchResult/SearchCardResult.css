@@ -1,6 +1,8 @@
 .main-search-card{
+    overflow: hidden;
     width:90%;
     display:flex;
+    position:relative;
     flex-direction: column;
     align-items:center;
     justify-content: center;
@@ -53,3 +55,28 @@ font-weight: 650;
     color:white;
     box-shadow:0 5px 10px rgba(80, 80, 228,0.5);
 }
+
+
+
+.dealOfTheDay{
+    position:absolute;
+    top:2rem;
+    left:-4rem;
+    /* border:1px solid black; */
+    transform: rotateZ(-28deg);
+    background-color: rgb(0,0,0,0.7);
+    height:3rem;
+    width:20rem;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.dealOfTheDay > h2{
+    height:100%;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+

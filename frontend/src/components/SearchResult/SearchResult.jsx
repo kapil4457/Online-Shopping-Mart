@@ -14,8 +14,13 @@ const SearchResult = () => {
   const [maxPrice, setMaxPrice] = useState(Number(99999));
   const [brandFilter, setBrandFilter] = useState("");
   const getData = async () => {
-    const temp = await axios.get(`/api/v1/products/search/${params.name}`);
-    setData(temp.data.products);
+    if (params.name == "new") {
+      const temp = await axios.get(`/api/v1/products/getLatest`);
+      setData(temp.data.products);
+    } else {
+      const temp = await axios.get(`/api/v1/products/search/${params.name}`);
+      setData(temp.data.products);
+    }
   };
 
   const filterBrands = () => {

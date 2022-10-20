@@ -20,7 +20,6 @@ const SearchPageResult = ({ data, range, brand }) => {
     <div className="heading-search-result">
       <div className="main-search-result">
         <h2>Search Result for '{params.name}'</h2>
-        <h3>Item Count : {data.length}</h3>
       </div>
       {data.length == 0 ? (
         <div className="no-items">

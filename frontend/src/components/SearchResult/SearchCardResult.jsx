@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SearchCardResult.css";
 import itemImage from "./television.jpg";
 import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
 const SearchCardResult = ({ data }) => {
+  const [dis, setDis] = useState("block");
+
+  const setD = () => {
+    if (data.dealOfTheDay == true) {
+      setDis("block");
+    } else {
+      setDis("none");
+    }
+  };
+
+  useEffect(() => {
+    setD();
+  }, []);
   return (
     <>
       <div className="main-search-card">
+        <div className="dealOfTheDay" style={{ display: `${dis} ` }}>
+          <h2>Deal of The Day</h2>
+        </div>
         <img src={`${itemImage}`} alt="" />
 
         <div className="item-name">

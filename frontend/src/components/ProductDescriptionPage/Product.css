@@ -1,0 +1,182 @@
+.main-product-page{
+    display:flex;
+    height:85vh;
+    width:100%;
+}
+
+.main-product-page> .left{
+    width:40%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.main-product-page > .left >.carousal> .leftBtn , .main-product-page > .left>.carousal>.rightBtn{
+    position:absolute;
+}
+
+.main-product-page > .left > .carousal{
+    /* border:1px solid black; */
+    box-shadow:0px 0px 20px rgba(0,0,0,0.6) ;
+    border-radius:10px;
+    height:45vh;
+    width:90%;
+    display:flex;
+    overflow:hidden;
+    position:relative;
+}
+
+.main-product-page > .left > .carousal>.main-carousal{
+    /* overflow:hidden; */
+    display:flex;
+
+
+}
+.main-product-page > .left > .carousal >div {
+    transition:all 0.3s ;
+}
+.main-product-page > .left > .carousal >div >img{
+    width:47rem;
+    height:100%;
+    object-fit: cover;
+}
+.leftBtn , .rightBtn{
+    top:50%;
+    background-color:rgba(0,0,0,0.6);
+    border-radius:50%;
+    color:white;
+    transition:all 0.5s;
+    cursor:pointer;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    z-index:999;
+
+    /* transform: translateX(10rem); */
+}
+
+.leftBtn:hover , .rightBtn:hover{
+    background-color:rgba(0,0,0,0.8);
+
+}
+.leftBtn > svg , .rightBtn> svg{
+    font-size:3rem;
+}
+.leftBtn{
+    left:1.5rem;
+}
+
+.rightBtn{
+    right:1.5rem;
+}
+
+
+.rightSide{
+    
+    display:flex;
+    flex-direction: column;
+    height:100%;
+    padding-top:12rem;
+    padding-left:3rem;
+    gap:2.4rem;
+
+}
+
+.rightSide >.name , .rightSide >.desc  ,.rightSide >.stock , .rightSide >.price{
+    display: flex;
+    gap:0.5rem;
+}
+
+.rightSide >.name>p , .rightSide >.desc>p  ,.rightSide >.stock>p , .rightSide >.price>p{
+    color:rgba(0,0,0,0.6);
+    font-weight:550;
+}
+
+.rightSide >.name>b , .rightSide >.desc>b  ,.rightSide >.stock>b , .rightSide >.price>b{
+    font-weight:600;
+    color:midnightblue
+}
+
+.rightSide>.name{
+    font-size:2.6rem;
+}
+
+.rightSide>.desc{
+    font-size:2rem;
+}
+.rightSide>.stock{
+    font-size:2rem;
+}
+.rightSide>.price{
+    font-size:2rem;
+}
+
+.inputSpace{
+    display:flex;
+}
+
+.inputSpace > .downBar , .inputSpace >.upBar{
+
+    /* border:1px solid red; */
+    /* border-radius:50%; */
+    border-radius:10px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    cursor:pointer;
+    transition: all 0.5s;
+
+}
+
+.inputSpace > .downBar{
+    border:1px solid red;
+    color:red;
+
+}
+.inputSpace > .upBar{
+    border:1px solid green;
+    color:green;
+}
+
+.inputSpace > .downBar>svg, .inputSpace >.upBar>svg{
+font-size:2.4rem;
+
+}
+
+.inputSpace >.downBar:hover{
+    border:1px soild white;
+    background-color:red;
+    color:white;
+}
+.inputSpace >.upBar:hover{
+    border:1px soild white;
+    background-color:green;
+    color:white;
+}
+.inputSpace > input{
+    /* border-bottom:1px solid gray; */
+    text-align: center;
+    font-size:1.5rem;
+    width:5rem;
+}
+.btnHub{
+    display: flex;
+    gap:4rem;
+}
+
+.btnHub >.add-to-cart{
+    width:9rem;
+    height:2.6rem;
+    cursor:pointer;
+    /* border:1px solid black; */
+    box-shadow: 0px 0px 10px gray;
+    background-color: rgb(106, 170, 9);
+    border-radius: 10px;
+    transition: all 0.4s;
+}
+
+.btnHub >.add-to-cart:hover{
+    background-color: rgb(148, 219, 42);
+    box-shadow: 0px 0px 10px green;
+
+}

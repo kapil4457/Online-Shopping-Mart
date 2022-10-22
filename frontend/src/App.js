@@ -6,6 +6,7 @@ import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer';
 import SearchResult from './components/SearchResult/SearchResult.jsx';
 import Product from './components/ProductDescriptionPage/Product';
+import Cart from './components/Cart/Cart';
 function App() {
   return (
     <>
@@ -15,6 +16,7 @@ function App() {
     < Route path='/' element={<Home/>} />
     < Route path='/products/:name' element={<SearchResult/>} />
     <Route path='/products/item/:id' element={<Product />} />
+    <Route path='/cart' element={<Cart />} />
     </Routes>
   
 <Footer />

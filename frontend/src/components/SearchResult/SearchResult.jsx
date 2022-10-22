@@ -78,8 +78,9 @@ const SearchResult = () => {
               >
                 All
               </p>
-              {allBrands.map((item) => (
+              {allBrands.map((item, key) => (
                 <p
+                  key={key}
                   onClick={(e) => {
                     setBrandFilter(item.name);
                     console.log(item.name);

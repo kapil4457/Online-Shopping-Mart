@@ -23,6 +23,50 @@ const Product = () => {
     setData(temp.data.product);
   };
 
+  const addToCart = async () => {
+    if (quantity === 0) {
+      window.alert("Quantity can not be smaller than 1");
+      return;
+    }
+    if (!localStorage.getItem("cartItems")) {
+      var cartItem = [];
+      var dataT = {
+        name: data.name,
+        id: data._id,
+        images: data.images,
+        price: data.price,
+        quantity: quantity,
+      };
+      cartItem.push(dataT);
+
+      localStorage.setItem("cartItems", JSON.stringify(cartItem));
+    } else {
+      var dataT = {
+        name: data.name,
+        id: data._id,
+        images: data.images,
+        price: data.price,
+        quantity: quantity,
+      };
+      var temp = JSON.parse(localStorage.getItem("cartItems"));
+      var check = false;
+      temp.forEach((item) => {
+        if (item.name == data.name) {
+          window.alert("Item already exists in the cart");
+          check = true;
+          return;
+        }
+      });
+
+      if (check == true) {
+        return;
+      }
+
+      temp.push(dataT);
+
+      localStorage.setItem("cartItems", JSON.stringify(temp));
+    }
+  };
   useEffect(() => {
     getData();
   }, []);
@@ -111,7 +155,9 @@ const Product = () => {
               <AddOutlinedIcon />
             </div>
           </div>
-          <button className="add-to-cart">Add to Cart</button>
+          <button className="add-to-cart" onClick={addToCart}>
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>

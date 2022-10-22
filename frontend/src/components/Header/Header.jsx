@@ -171,11 +171,15 @@ const Header = () => {
             <p>Hello Kapil</p>
           </div>
           <div className="options">
-            {sideBarHeadings.map((item) => (
-              <div>
+            {sideBarHeadings.map((item, key) => (
+              <div key={key}>
                 <h2 className="item-header">{item.title}</h2>
-                {item.subDiv.map((sub) => (
-                  <NavLink to={`${sub.link}`} className="item-sub-header">
+                {item.subDiv.map((sub, key) => (
+                  <NavLink
+                    key={key}
+                    to={`${sub.link}`}
+                    className="item-sub-header"
+                  >
                     {sub.subTitle}
                   </NavLink>
                 ))}

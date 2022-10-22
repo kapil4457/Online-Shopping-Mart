@@ -2,21 +2,29 @@ import React, { useState } from "react";
 import i1 from "./bags.jpg";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const CartCard = ({ item }) => {
   const [quan, setQuan] = useState(item.quantity);
-
+  const navigate = useNavigate();
   const updateLocalStorage = async () => {
-    var temp = await JSON.parse(localStorage.getItem("cartItems"));
-    await temp.forEach((i) => {
-      if (item.id === i.id) {
-        i.quantity = quan;
-        return;
-      }
-    });
-    localStorage.setItem("cartItems", JSON.stringify(temp));
+    if (quan <= 0) {
+      var temp = await JSON.parse(localStorage.getItem("cartItems"));
+      const filtered = await temp.filter((i) => i.id !== item.id);
+      localStorage.setItem("cartItems", JSON.stringify(filtered));
+      window.location.reload();
+      return;
+    } else {
+      var temp = await JSON.parse(localStorage.getItem("cartItems"));
+      await temp.forEach((i) => {
+        if (item.id === i.id) {
+          i.quantity = quan;
+          return;
+        }
+      });
+      localStorage.setItem("cartItems", JSON.stringify(temp));
+    }
   };
   useEffect(() => {
     updateLocalStorage();

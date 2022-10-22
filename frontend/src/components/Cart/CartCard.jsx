@@ -7,13 +7,14 @@ import { useEffect } from "react";
 
 const CartCard = ({ item }) => {
   const [quan, setQuan] = useState(item.quantity);
-  const navigate = useNavigate();
+  const [subTotal, setsubTotal] = useState(item.quantity * item.price);
   const updateLocalStorage = async () => {
     if (quan <= 0) {
       var temp = await JSON.parse(localStorage.getItem("cartItems"));
       const filtered = await temp.filter((i) => i.id !== item.id);
       localStorage.setItem("cartItems", JSON.stringify(filtered));
       window.location.reload();
+
       return;
     } else {
       var temp = await JSON.parse(localStorage.getItem("cartItems"));
@@ -23,16 +24,17 @@ const CartCard = ({ item }) => {
           return;
         }
       });
+      setsubTotal(quan * item.price);
       localStorage.setItem("cartItems", JSON.stringify(temp));
     }
   };
   useEffect(() => {
     updateLocalStorage();
-  }, [quan]);
+  }, [quan, item.quan, item.price]);
   return (
     <div className="cart-card">
       <img src={i1} alt="" />
-      <div>
+      <div className="f">
         <div>
           <p>Name :</p>
           <NavLink to={`/products/item/${item.id}`} className="name-of-item">
@@ -41,9 +43,9 @@ const CartCard = ({ item }) => {
         </div>
         <div>
           <p>Price :</p>
-          <p className="price-of-item">{item?.price}</p>
+          <p className="price-of-item">₹ {item?.price}</p>
         </div>
-        <div>
+        <div className="incrementer">
           <button
             className="dec"
             onClick={() => {
@@ -68,7 +70,10 @@ const CartCard = ({ item }) => {
           </button>
         </div>
       </div>
-      <button className="remove"></button>
+      <div className="subTotal">
+        <b>Item Total : </b>
+        <p>₹ {subTotal}</p>
+      </div>
     </div>
   );
 };

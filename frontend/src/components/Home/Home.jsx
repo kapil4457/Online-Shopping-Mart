@@ -61,7 +61,7 @@ const Home = () => {
                   <img src="ac.jpg" alt="AC " />
                   <p>Inverter AC | Upto 60% off</p>
                 </NavLink>
-                <NavLink to="/products/Micro" className="micro">
+                <NavLink to="/products/MicroWave" className="micro">
                   <img src="micro.jpg" alt="MIcroWave" />
                   <p>MicroWaves | Starting 9,640</p>
                 </NavLink>

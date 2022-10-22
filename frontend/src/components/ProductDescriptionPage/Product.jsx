@@ -6,8 +6,9 @@ import { useEffect } from "react";
 import { useParams } from "react-router";
 import i1 from "./ac.jpg";
 import i2 from "./fridge.jpg";
-import i3 from "./bags.jpg";
 import i4 from "./television.jpg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import ChevronLeftOutlinedIcon from "@mui/icons-material/ChevronLeftOutlined";
 import ChevronRightOutlinedIcon from "@mui/icons-material/ChevronRightOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
@@ -24,10 +25,6 @@ const Product = () => {
   };
 
   const addToCart = async () => {
-    if (quantity === 0) {
-      window.alert("Quantity can not be smaller than 1");
-      return;
-    }
     if (!localStorage.getItem("cartItems")) {
       var cartItem = [];
       var dataT = {
@@ -41,6 +38,10 @@ const Product = () => {
 
       localStorage.setItem("cartItems", JSON.stringify(cartItem));
     } else {
+      if (quantity === 0) {
+        toast("Quantity can not be smaller than 1");
+        return;
+      }
       var dataT = {
         name: data.name,
         id: data._id,
@@ -52,7 +53,7 @@ const Product = () => {
       var check = false;
       temp.forEach((item) => {
         if (item.name == data.name) {
-          window.alert("Item already exists in the cart");
+          toast("Item already exists in the cart");
           check = true;
           return;
         }
@@ -65,6 +66,7 @@ const Product = () => {
       temp.push(dataT);
 
       localStorage.setItem("cartItems", JSON.stringify(temp));
+      toast("Item Successfully added to cart");
     }
   };
   useEffect(() => {
@@ -132,6 +134,9 @@ const Product = () => {
             <div
               className="downBar"
               onClick={() => {
+                if (quantity == 0) {
+                  return;
+                }
                 var temp = quantity - 1;
                 setQuantity(temp);
               }}
@@ -160,6 +165,7 @@ const Product = () => {
           </button>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

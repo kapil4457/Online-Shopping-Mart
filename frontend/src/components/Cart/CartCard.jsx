@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import i1 from "./bags.jpg";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
-import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
 
 const CartCard = ({ item }) => {

@@ -179,6 +179,7 @@ const Header = () => {
                     key={key}
                     to={`${sub.link}`}
                     className="item-sub-header"
+                    onClick={DisappearSideHeader}
                   >
                     {sub.subTitle}
                   </NavLink>

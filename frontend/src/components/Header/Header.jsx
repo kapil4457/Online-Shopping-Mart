@@ -6,7 +6,12 @@ import GavelOutlinedIcon from "@mui/icons-material/GavelOutlined";
 import { NavLink, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import profile from "./pp.jpg";
+import LogoutIcon from "@mui/icons-material/Logout";
 import logo from "./logo2.png";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../redux/actions/userAction";
+import tempPP from "./tempPP.png";
 const sideBarHeadings = [
   {
     title: "Trending",
@@ -77,8 +82,9 @@ const sideBarHeadings = [
   },
 ];
 const Header = () => {
+  const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const [searchItem, setSearchItem] = useState("");
 
   const sendRequest = () => {
@@ -101,6 +107,10 @@ const Header = () => {
     // console.log(temp);
     temp.classList.add("translateXNegative");
     temp.classList.remove("translateXPositive");
+  };
+
+  const logoutTrigger = async () => {
+    dispatch(logout());
   };
 
   return (
@@ -137,9 +147,33 @@ const Header = () => {
               <ShoppingCartOutlinedIcon />
               <p>Cart</p>
             </NavLink>
-            <NavLink to="/account" className="accountSection">
-              <img src="logo.png" alt="" />
+            <NavLink
+              to={user ? "/account" : "/login"}
+              className="accountSection"
+            >
+              {user != null ? (
+                <img
+                  src={profile}
+                  alt=""
+                  style={{ border: "2px solid white" }}
+                />
+              ) : (
+                <img
+                  src={tempPP}
+                  alt=""
+                  style={{ border: "2px solid white" }}
+                />
+              )}
             </NavLink>
+            {user ? (
+              <LogoutIcon
+                className="logout-icon"
+                style={{ fontSize: "2rem" }}
+                onClick={logoutTrigger}
+              />
+            ) : (
+              <></>
+            )}
           </div>
         </div>
         <div className="second-part">

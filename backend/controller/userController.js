@@ -4,17 +4,15 @@ const sendToken = require("../utils/jwtToken");
 const { use } = require("express/lib/router");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
+const cookieParser = require("cookie-parser");
+
 
 //Register a User
 
 exports.registerUser = (async (req, res, next) => {
     try{
 
-        // const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-        //     folder: "avatars",
-        //     width: 150,
-        //     crop: "scale",
-        // });
+ 
         let role = "user";
         if(req.body.role){
             role = "admin";
@@ -27,10 +25,6 @@ exports.registerUser = (async (req, res, next) => {
             email,
             password,
             role,
-            // avatar: {
-            //     public_id: myCloud.public_id,
-            //     url: myCloud.secure_url,
-            // },
             avatar: {
                 public_id: "123456",
                 url: "123456",
@@ -39,7 +33,7 @@ exports.registerUser = (async (req, res, next) => {
         
         sendToken(user, 201, res);
     }catch(err) {
-        res.send({success:false  , message : err.message});
+        res.send({success:false  , message : err.stack});
     }
     });
 
@@ -50,11 +44,10 @@ exports.registerUser = (async (req, res, next) => {
 
 exports.loginUser = (async (req, res, next) => {
     try{
-
-        const { email, password } = req.body;
+        const { email, password } = await req.body;
         
         if (!email || !password) {
-            res.status(400).send({success :false , message : "Invalid Email or Password"})
+           await res.status(400).json({success :false , message : "Invalid Email or Password"})
            return;
 
         }
@@ -62,7 +55,7 @@ exports.loginUser = (async (req, res, next) => {
         const user = await User.findOne({ email }).select("+password");
         
         if (!user) {
-            res.status(400).send({success :false , message : "Invalid Email or Password"})
+            await res.status(400).json({success :false , message : "Invalid Email or Password"})
            return;
 
         }
@@ -70,13 +63,13 @@ exports.loginUser = (async (req, res, next) => {
         const isMatch = await user.comparePassword(password);
         
         if (!isMatch) {
-           res.status(400).send({success :false , message : "Invalid Email or Password"})
+          await  res.status(400).json({success :false , message : "Invalid Email or Password"})
            return;
         }
         
-        sendToken(user, 200, res);
+         sendToken(user, 200, res);
     }catch(err){
-        res.send({success:false , message : err.message})
+       await res.json({success:false , message : err.message})
     }
     });
     
@@ -103,6 +96,11 @@ exports.logout = (async (req, res, next) => {
 
 exports.getUserDetails = (async (req, res, next) => {
     try{
+        const cookie = req.headers.cookie;
+        if(!cookie){
+            res.status(404).send({success:false , message : "You have already Logged in !"})
+            return;
+        }
 
         const user = await User.findById(req.user.id);
         
@@ -185,7 +183,5 @@ exports.updateProfile = (async (req, res, next) => {
                 res.status(400).send({success : false , message : err.message})
             }
 });
-
-
 
 

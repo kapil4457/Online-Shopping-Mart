@@ -37,9 +37,7 @@ const Home = () => {
   return (
     <>
       {loaded === "false" ? (
-        <div className="loader">
-          <Loading />
-        </div>
+        <Loading />
       ) : (
         <div className="main-home">
           <SliderMain dataSlider={AllProducts} />

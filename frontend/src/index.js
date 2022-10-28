@@ -4,20 +4,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import {BrowserRouter} from 'react-router-dom'
-import {CookiesProvider} from "react-cookie";
-
+import store  from './redux/store';
+import { Provider } from 'react-redux'
 const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(
-  <CookiesProvider >
+<Provider store={store}>
 
   <BrowserRouter>
   <React.StrictMode>
       <App />
   </React.StrictMode>
   </BrowserRouter>
-  </CookiesProvider>
+</Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

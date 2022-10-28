@@ -11,7 +11,10 @@ LOGOUT_SUCCESS,
 LOGOUT_FAIL,
 REGISTER_SUCCESS,
 REGISTER_FAIL,
-REGISTER_REQUEST
+REGISTER_REQUEST,
+UPDATE_FAIL,
+UPDATE_REQUEST,
+UPDATE_SUCCESS
 }from '../constants/userConstants'
 
 
@@ -75,9 +78,20 @@ export const register = (userData) => async (dispatch) => {
 	
 		const config = { headers: { "Content-Type": "application/json" } };
 		const { data } = await axios.post(`/api/v1/register`, userData, config);
-		console.log(data)
 		await dispatch({ type: REGISTER_SUCCESS ,payload : data.user});
 	} catch (error) {
 		await dispatch({ type: REGISTER_FAIL, payload: error.response.data.message });
+	}
+};
+export const updateProfile = (userData) => async (dispatch) => {
+	try {
+		
+		await dispatch({ type: UPDATE_REQUEST });
+	
+		const config = { headers: { "Content-Type": "application/json" } };
+		const { data } = await axios.put(`/api/v1/me/update`, userData, config);
+		await dispatch({ type: UPDATE_SUCCESS ,payload : data.user});
+	} catch (error) {
+		await dispatch({ type: UPDATE_FAIL, payload: error.response.data.message });
 	}
 };

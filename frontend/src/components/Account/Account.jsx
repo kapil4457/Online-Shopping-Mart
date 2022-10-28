@@ -22,6 +22,7 @@ const Account = () => {
       navigate("/login");
     }
   }, [isAuthenticated, error, navigate, user]);
+
   return (
     <>
       {loading === true ? (

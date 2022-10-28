@@ -3,15 +3,15 @@ import {Route , Routes} from 'react-router-dom'
 import Home from './components/Home/Home'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer';
+import UpdateProfile from './components/updateProfile/UpdateProfile.jsx';
 import SearchResult from './components/SearchResult/SearchResult.jsx';
 import Product from './components/ProductDescriptionPage/Product';
 import Cart from './components/Cart/Cart';
 import Login from './components/Login/Login';
 import Account from './components/Account/Account';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { loadUser } from './redux/actions/userAction';
-
 
 // kapilsoni54768161@gmail.com
 
@@ -35,6 +35,7 @@ import { loadUser } from './redux/actions/userAction';
     <Route path='/cart' element={<Cart />} />
     <Route path='/login' element={<Login />}  />
     <Route path='/account' element={<Account />}  />
+    <Route path='/update/profile' element={<UpdateProfile />}  />
     
     </Routes>
 <Footer />

@@ -1,5 +1,5 @@
 import {  configureStore} from '@reduxjs/toolkit'
-import { userReducer } from './reducers/userReducer'
+import { profileReducer, userReducer } from './reducers/userReducer'
 
 
 
@@ -9,7 +9,8 @@ import { userReducer } from './reducers/userReducer'
 
 export default configureStore({
     reducer:{
-        user : userReducer
+        user : userReducer,
+        profile : profileReducer
     }    ,
     middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -10,7 +10,10 @@ import {LOGIN_FAIL,
 	LOGOUT_SUCCESS,
 	REGISTER_FAIL,
 	REGISTER_REQUEST,
-	REGISTER_SUCCESS
+	REGISTER_SUCCESS,
+	UPDATE_FAIL,
+	UPDATE_REQUEST,
+	UPDATE_SUCCESS
 } from '../constants/userConstants'
 
 
@@ -81,3 +84,40 @@ export const userReducer = (state = { user: {} }, action) => {
 	}
 };
 
+
+export const profileReducer = (state = {}, action) => {
+	switch (action.type) {
+		case UPDATE_REQUEST:
+		
+			return {
+				...state,
+				loading: true,
+			};
+
+		case UPDATE_SUCCESS:
+			return {
+				...state,
+				loading: false,
+				isUpdated: true,
+			};
+
+	
+
+		
+		case UPDATE_FAIL:
+			return {
+				...state,
+				loading: false,
+				error: action.payload,
+			};
+
+		case CLEAR_ERRORS:
+			return {
+				...state,
+				error: null,
+			};
+	
+		default:
+			return state;
+	}
+};

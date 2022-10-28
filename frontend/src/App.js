@@ -12,7 +12,7 @@ import Account from './components/Account/Account';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { loadUser } from './redux/actions/userAction';
-
+import UpdatePassword from './components/updatePassword/UpdatePassword';
 // kapilsoni54768161@gmail.com
 
   function App() {
@@ -36,6 +36,7 @@ import { loadUser } from './redux/actions/userAction';
     <Route path='/login' element={<Login />}  />
     <Route path='/account' element={<Account />}  />
     <Route path='/update/profile' element={<UpdateProfile />}  />
+    <Route path='/update/password' element={<UpdatePassword />}  />
     
     </Routes>
 <Footer />

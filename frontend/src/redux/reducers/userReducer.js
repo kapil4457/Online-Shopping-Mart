@@ -13,7 +13,10 @@ import {LOGIN_FAIL,
 	REGISTER_SUCCESS,
 	UPDATE_FAIL,
 	UPDATE_REQUEST,
-	UPDATE_SUCCESS
+	UPDATE_SUCCESS,
+	UPDATE_PASSWORD_FAIL,
+	UPDATE_PASSWORD_SUCCESS,
+	UPDATE_PASSWORD_REQUEST
 } from '../constants/userConstants'
 
 
@@ -88,6 +91,8 @@ export const userReducer = (state = { user: {} }, action) => {
 export const profileReducer = (state = {}, action) => {
 	switch (action.type) {
 		case UPDATE_REQUEST:
+			case UPDATE_PASSWORD_REQUEST:
+
 		
 			return {
 				...state,
@@ -95,6 +100,8 @@ export const profileReducer = (state = {}, action) => {
 			};
 
 		case UPDATE_SUCCESS:
+			case UPDATE_PASSWORD_SUCCESS:
+
 			return {
 				...state,
 				loading: false,
@@ -105,6 +112,8 @@ export const profileReducer = (state = {}, action) => {
 
 		
 		case UPDATE_FAIL:
+		case UPDATE_PASSWORD_FAIL:
+
 			return {
 				...state,
 				loading: false,

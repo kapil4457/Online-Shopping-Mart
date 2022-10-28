@@ -21,6 +21,10 @@ code {
     monospace;
 }
 
+input{
+  outline:none;
+  background-color: transparent;
+}
 
 a{
   text-decoration:none;

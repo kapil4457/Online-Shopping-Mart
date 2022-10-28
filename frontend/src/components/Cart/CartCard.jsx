@@ -13,7 +13,7 @@ const CartCard = ({ item }) => {
       var temp = await JSON.parse(localStorage.getItem("cartItems"));
       const filtered = await temp.filter((i) => i.id !== item.id);
       localStorage.setItem("cartItems", JSON.stringify(filtered));
-      window.location.reload();
+      // window.location.reload();
 
       return;
     } else {

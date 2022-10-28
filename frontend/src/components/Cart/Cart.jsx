@@ -29,7 +29,7 @@ const Cart = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [data]);
   return (
     <>
       {data.length == 0 ? (

@@ -6,7 +6,6 @@ import { profileReducer, userReducer } from './reducers/userReducer'
 
 
 
-
 export default configureStore({
     reducer:{
         user : userReducer,

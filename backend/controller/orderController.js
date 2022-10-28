@@ -164,3 +164,15 @@ exports.deleteOrder = (async (req, res, next) => {
 		res.status(500).json({ success:false , message : err.message })
 	}
 });
+
+exports.cancelOrder = async(req,res)=>{
+	try{
+
+		const order = await Order.findById(req.body.id);
+		order.orderStatus  = 'Cancelled';
+		await order.save({validateBeforeSave : false});
+		res.status(200).send({success : true , message : "Order Cancelled Successfully"})
+	}catch(err){
+		res.status(500).json({ success : false , message : err.message	 })
+	}
+}

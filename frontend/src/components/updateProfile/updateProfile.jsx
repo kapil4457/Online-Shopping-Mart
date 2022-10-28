@@ -15,11 +15,10 @@ const UpdateProfile = () => {
 
   const [newName, setName] = useState();
   const [newEmail, setEmail] = useState();
-  let count = 0;
   const dispatch = useDispatch();
   const updateData = async () => {
-    if (count !== 2) {
-      toast("Please Lock both the items before updation");
+    if (!newName || !newEmail) {
+      toast("Please Enter both the fields");
     } else {
       const data = {
         name: newName,
@@ -36,7 +35,10 @@ const UpdateProfile = () => {
 
     if (isUpdated == true) {
       toast("Data updated successfully");
-      navigate("/account");
+      setTimeout(() => {
+        navigate("/account");
+        window.location.reload();
+      }, 3000);
     }
 
     setName(user.name);
@@ -68,13 +70,6 @@ const UpdateProfile = () => {
                 onClick={() => {
                   var temp = document.getElementById("name-box");
                   temp.disabled = !temp.disabled;
-                  if (temp.disabled == true) {
-                    count++;
-                  } else {
-                    count--;
-                  }
-
-                  console.log("count : ", count);
                 }}
               />
             </div>
@@ -93,13 +88,6 @@ const UpdateProfile = () => {
                 onClick={() => {
                   var temp = document.getElementById("email-box");
                   temp.disabled = !temp.disabled;
-
-                  if (temp.disabled == true) {
-                    count++;
-                  } else {
-                    count--;
-                  }
-                  console.log("count : ", count);
                 }}
               />
             </div>

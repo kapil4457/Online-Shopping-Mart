@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { loadUser } from './redux/actions/userAction';
 import UpdatePassword from './components/updatePassword/UpdatePassword';
+import MyOrders from './components/myOrders/MyOrders';
 // kapilsoni54768161@gmail.com
 
   function App() {
@@ -37,6 +38,7 @@ import UpdatePassword from './components/updatePassword/UpdatePassword';
     <Route path='/account' element={<Account />}  />
     <Route path='/update/profile' element={<UpdateProfile />}  />
     <Route path='/update/password' element={<UpdatePassword />}  />
+    <Route path='/my-orders' element={<MyOrders />}  />
     
     </Routes>
 <Footer />

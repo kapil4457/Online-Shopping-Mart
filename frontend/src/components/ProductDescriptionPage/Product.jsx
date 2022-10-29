@@ -29,7 +29,7 @@ const Product = () => {
       var cartItem = [];
       var dataT = {
         name: data.name,
-        id: data._id,
+        product: data._id,
         images: data.images,
         price: data.price,
         quantity: quantity,
@@ -44,7 +44,7 @@ const Product = () => {
       }
       var dataT = {
         name: data.name,
-        id: data._id,
+        product: data._id,
         images: data.images,
         price: data.price,
         quantity: quantity,

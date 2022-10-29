@@ -1,12 +1,15 @@
 import { Typography } from "@material-ui/core";
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { createOrder } from "../../redux/actions/orderAction";
 import "./ConfirmOrder.css";
 
 const ConfirmOrder = () => {
+  const dispatch = useDispatch();
   const { user, isAuthenticated } = useSelector((state) => state.user);
+  const { order } = useSelector((state) => state.createOrder);
   const navigate = useNavigate();
 
   const cartItems = JSON.parse(localStorage.getItem("cartItems"));
@@ -23,19 +26,34 @@ const ConfirmOrder = () => {
 
   const proceedToPayment = () => {
     const data = {
-      subtotal,
-      shippingCharges,
-      tax,
-      totalPrice,
+      itemsPrice: subtotal,
+      taxPrice: tax,
+      shippingPrice: shippingCharges,
+      shippingInfo: shippingInfo,
+      orderItems: cartItems,
+      paymentInfo: {
+        method: "COD",
+        status: "Processing",
+      },
+      totalPrice: totalPrice,
     };
 
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
-    navigate("/process/payment");
+    dispatch(createOrder(data));
   };
 
   if (!isAuthenticated) {
     navigate("/account");
   }
+
+  useEffect(() => {
+    if (order) {
+      if (order.success === true) {
+        navigate("/order/placed");
+        window.location.reload();
+      }
+    }
+  }, [order]);
   return (
     <>
       <div className="ConfirmOrderPage">

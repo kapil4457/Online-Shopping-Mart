@@ -16,9 +16,11 @@ import UpdatePassword from './components/updatePassword/UpdatePassword';
 import MyOrders from './components/myOrders/MyOrders';
 import ShippingInfo from './components/ShippingInfo/ShippingInfo';
 import ConfirmOrder from './components/ConfirmOrder/ConfirmOrder';
+
 // kapilsoni54768161@gmail.com
 
   function App() {
+   
     const dispatch  = useDispatch();
     useEffect(() => {
       dispatch(loadUser());
@@ -30,6 +32,7 @@ import ConfirmOrder from './components/ConfirmOrder/ConfirmOrder';
    
 
 <Header />
+
 
     <Routes>
     < Route path='/' element={<Home/>} />

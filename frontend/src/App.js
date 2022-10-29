@@ -15,6 +15,7 @@ import { loadUser } from './redux/actions/userAction';
 import UpdatePassword from './components/updatePassword/UpdatePassword';
 import MyOrders from './components/myOrders/MyOrders';
 import ShippingInfo from './components/ShippingInfo/ShippingInfo';
+import ConfirmOrder from './components/ConfirmOrder/ConfirmOrder';
 // kapilsoni54768161@gmail.com
 
   function App() {
@@ -41,6 +42,7 @@ import ShippingInfo from './components/ShippingInfo/ShippingInfo';
     <Route path='/update/password' element={<UpdatePassword />}  />
     <Route path='/my-orders' element={<MyOrders />}  />
     <Route path='/shipping/info' element={<ShippingInfo />}  />
+    <Route path='/order/confirm' element={<ConfirmOrder />}  />
     
     </Routes>
 <Footer />

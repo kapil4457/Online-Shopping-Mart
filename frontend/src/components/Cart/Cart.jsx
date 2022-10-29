@@ -23,7 +23,7 @@ const Cart = () => {
         temp += item.quantity * item.price;
       });
       setSubTotal(temp);
-      setGST(temp * 0.1);
+      setGST(temp * 0.18);
 
       setTotal(temp + GST);
     }
@@ -65,7 +65,7 @@ const Cart = () => {
               </div>
               <div>
                 <b>Total : </b>
-                <p>{total}</p>
+                <p>{total} + Shipping Charges</p>
               </div>
               <button
                 onClick={() => {

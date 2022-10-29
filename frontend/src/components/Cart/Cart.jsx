@@ -2,15 +2,17 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 import "./Cart.css";
 import CartCard from "./CartCard";
 const Cart = () => {
+  const { isAuthenticated } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [GST, setGST] = useState();
   const [Subtotal, setSubTotal] = useState();
   const [total, setTotal] = useState();
+
   const getData = async () => {
     if (localStorage.getItem("cartItems")) {
       var tempD = JSON.parse(localStorage.getItem("cartItems"));
@@ -65,7 +67,16 @@ const Cart = () => {
                 <b>Total : </b>
                 <p>{total}</p>
               </div>
-              <button className="proceed-to-payment-btn">
+              <button
+                onClick={() => {
+                  if (isAuthenticated) {
+                    navigate("/shipping/info");
+                  } else {
+                    navigate("/login");
+                  }
+                }}
+                className="proceed-to-payment-btn"
+              >
                 Proceed to Payment
               </button>
             </div>

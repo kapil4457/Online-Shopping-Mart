@@ -12,10 +12,22 @@ const MyOrders = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [itemToDisplay, setItemToDisplay] = useState(null);
+  const [OrderitemToDisplay, setOrderItemToDisplay] = useState(null);
   const { loading, orders } = useSelector((state) => state.myOrder);
+  const [load, setLoad] = useState(false);
   useEffect(() => {
     dispatch(myOrders());
-  }, [dispatch, navigate]);
+    if (OrderitemToDisplay != null && itemToDisplay != null) {
+      setLoad(true);
+    }
+  }, [
+    dispatch,
+    navigate,
+    OrderitemToDisplay,
+    load,
+    OrderitemToDisplay,
+    itemToDisplay,
+  ]);
   return (
     <>
       {loading === true ? (
@@ -28,8 +40,9 @@ const MyOrders = () => {
               {orders?.map((item, key) => (
                 <div key={key} className="order-card">
                   <div
-                    onClick={() => {
+                    onClick={async () => {
                       setItemToDisplay(item);
+                      setOrderItemToDisplay(item?.orderItems);
                     }}
                   >
                     <div>
@@ -81,13 +94,12 @@ const MyOrders = () => {
               ) : (
                 <div className="item-info">
                   <div className="item-desc-card">
-                    {/* <div>{itemToDisplay.orderItems[0].name}</div> */}
-                    {itemToDisplay?.orderItems?.map((item, key) => {
-                      <OrderItemCard key={key} item={item} />;
-                    })}
-                    <OrderItemCard item={itemToDisplay.orderItems[0]} />
-                    <OrderItemCard item={itemToDisplay.orderItems[0]} />
-                    <OrderItemCard item={itemToDisplay.orderItems[0]} />
+                    {load &&
+                      OrderitemToDisplay?.map((item, key) => {
+                        <OrderItemCard key={key} item={item} />;
+                      })}
+
+                    {/* <OrderItemCard item={itemToDisplay.orderItems[0]} /> */}
                   </div>
 
                   <div className="other-info">

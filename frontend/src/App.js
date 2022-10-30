@@ -19,7 +19,7 @@ import ConfirmOrder from './components/ConfirmOrder/ConfirmOrder';
 import OrderSuccess from './components/OrderSuccess/OrderSuccess';
 import UserOptions from './components/UserOptions/UserOptions';
 import Dashboard from './components/DashBoard/Dashboard';
-import Products from './components/Products/Products';
+import ProductPage from './components/ProductPage/ProductPage';
 
 // kapilsoni54768161@gmail.com
 
@@ -52,7 +52,7 @@ import Products from './components/Products/Products';
     <Route path='/order/confirm' element={<ConfirmOrder />}  />
     <Route path='/order/placed' element={<OrderSuccess />}  />
     <Route path='/admin/dashboard' element={<Dashboard />}  />
-    <Route path='/admin/products' element={<Products />}  />
+    <Route path='/admin/products' element={<ProductPage />}  />
     
     </Routes>
    

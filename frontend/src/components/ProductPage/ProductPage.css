@@ -1,0 +1,98 @@
+.main-product-page-admin{
+    display:flex;
+    min-height:83vh;
+}
+
+.main-product-page-admin > .products{
+    display:flex;
+    flex-direction:column;
+    gap:4rem;
+    padding:2rem;
+    width:100%;
+}
+
+.main-product-page-admin > .products >.heading{
+    display:flex;
+    flex-direction: column;
+    gap:0.5rem;
+}
+.main-product-page-admin > .products >.heading>h1{
+    font-size:3rem;
+    font-weight:550;
+    text-decoration:underline;
+
+}
+.main-product-page-admin > .products >.heading>div{
+    font-size:1.5rem;
+}
+
+.main-product-page-admin > .products >.products-grid{
+    display:flex;
+    gap:1rem;
+    flex-direction: column;
+    
+    
+}
+.main-product-page-admin > .products >.products-grid>div{
+    display:flex;
+}
+.main-product-page-admin > .products >.products-grid>.product-card{
+    
+    width:50%;
+    height:10rem;
+    box-shadow:0px 0px 10px rgba(0,0,0,0.6);
+    border-radius:10px;
+}
+    .main-product-page-admin > .products >.products-grid>.product-card>a>img{
+        height:100%;
+        width:15rem;
+        border-radius:10px 0px 0px 10px; 
+    }
+    .main-product-page-admin > .products >.products-grid>.product-card>.information{
+        display:flex;
+        justify-content: space-between;
+        width:100%;
+        padding:0.5rem 1rem;
+        color:black
+    }
+        .main-product-page-admin > .products >.products-grid>.product-card>.information>.data{
+            display:flex;
+            flex-direction: column;
+            gap:0.2rem;
+        }
+        .main-product-page-admin > .products >.products-grid>.product-card>.information >.buttons{
+            display:flex;
+            flex-direction: column;
+            height:100%;
+            justify-content: center;
+            align-items: center;
+            gap:1rem;
+        }
+            .main-product-page-admin > .products >.products-grid>.product-card>.information >.buttons>button{
+                width:7rem;
+                cursor:pointer;
+                height:3rem;
+                /* border:1px solid black; */
+            }
+                .main-product-page-admin > .products >.products-grid>.product-card>.information >.buttons>.delete{
+                    color:red;
+                    border:1px solid red;
+                    font-size:1.2rem;
+                    transition: all 0.4s;
+                }
+                .main-product-page-admin > .products >.products-grid>.product-card>.information >.buttons>.delete:hover{
+                    background-color: red;
+                    color:white;
+                }
+                .main-product-page-admin > .products >.products-grid>.product-card>.information >.buttons>.update{
+                        color:rgb(172, 172, 7);
+                        border:1px solid rgb(172, 172, 7);
+                        font-size:1.2rem;
+                    transition: all 0.4s;
+
+                    }
+
+                    .main-product-page-admin > .products >.products-grid>.product-card>.information >.buttons>.update:hover{
+                        background-color: rgb(172, 172, 7);
+                        color:white;
+                    }

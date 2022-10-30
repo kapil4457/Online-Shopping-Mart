@@ -1,13 +1,11 @@
 .sidebar{
     display:flex;
     flex-direction: column;
-    min-height:82vh;
-    justify-content:center;
+    padding-top:5rem;
     align-items:center;
     width:20rem;
     background-color:rgba(243, 84, 26, 0.9);
     gap:2rem;
-    height:100%;
     
 }
 

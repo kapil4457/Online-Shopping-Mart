@@ -6,6 +6,9 @@ import {SEARCH_PRODUCT_FAIL,
     GET_PRODUCTS_FAIL,
     GET_PRODUCTS_SUCCESS,
     GET_PRODUCTS_REQUEST,
+    DELETE_PRODUCT_FAIL,
+    DELETE_PRODUCT_REQUEST,
+    DELETE_PRODUCT_SUCCESS,
     CLEAR_ERRORS} from '../constants/productConstant'
 
 export const searchItem = (id)=> async (dispatch) => {
@@ -48,4 +51,17 @@ export const getAllProducts = ()=>async(dispatch)=>{
             dispatch({type:GET_PRODUCTS_FAIL , error : error.message})
         }
         
+}
+
+
+export const deleteProduct = (id)=>async(dispatch)=>{
+    try{
+        dispatch({type:DELETE_PRODUCT_REQUEST})
+        const {data} = await axios.delete(`/api/v1/admin/deleteProduct/${id}`)
+        console.log("data" ,data)
+        dispatch({type:DELETE_PRODUCT_SUCCESS , payload:data})
+
+    }catch(error){
+        dispatch({type:DELETE_PRODUCT_FAIL , error:error.message})
+    }
 }

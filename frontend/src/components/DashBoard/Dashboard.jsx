@@ -27,7 +27,7 @@ const Dashboard = () => {
           <Sidebar />
           <div className="dashboard">
             <div className="totalEarn">
-              Total Revenue :₹ {Math.round(order?.totalAmount)}
+              Total Revenue : ₹ {Math.round(order?.totalAmount)}
             </div>
             <div className="overview-circle">
               <div className="orderCount">

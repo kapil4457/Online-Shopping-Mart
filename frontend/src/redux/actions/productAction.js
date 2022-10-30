@@ -1,6 +1,12 @@
 import axios from "axios";
 import { useParams } from "react-router";
-import {SEARCH_PRODUCT_FAIL,SEARCH_PRODUCT_REQUEST,SEARCH_PRODUCT_SUCCESS,CLEAR_ERRORS} from '../constants/productConstant'
+import {SEARCH_PRODUCT_FAIL,
+    SEARCH_PRODUCT_REQUEST,
+    SEARCH_PRODUCT_SUCCESS,
+    GET_PRODUCTS_FAIL,
+    GET_PRODUCTS_SUCCESS,
+    GET_PRODUCTS_REQUEST,
+    CLEAR_ERRORS} from '../constants/productConstant'
 
 export const searchItem = (id)=> async (dispatch) => {
     try{
@@ -28,3 +34,18 @@ export const clearErrors = () => async (dispatch) => {
 	});
     
 };
+
+export const getAllProducts = ()=>async(dispatch)=>{
+        try{
+
+            dispatch({type:GET_PRODUCTS_REQUEST});
+            const {data}  =await axios.get('/api/v1/products');
+
+            dispatch({type:GET_PRODUCTS_SUCCESS , payload:data})
+
+        }catch(error)
+        {
+            dispatch({type:GET_PRODUCTS_FAIL , error : error.message})
+        }
+        
+}

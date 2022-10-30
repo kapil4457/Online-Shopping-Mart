@@ -1,0 +1,63 @@
+.main-dash-board{
+    display:flex;
+}
+
+.dashboard{
+    height: 100%;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:82vh;
+    flex-direction:column; 
+    gap:4rem;
+}
+
+.dashboard > .totalEarn{
+    width: 80%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    background-color: rgb(0, 0, 255,0.7);
+    height:5rem;
+    font-size:1.7rem;
+    color:white;
+    font-weight:650;
+}
+
+
+.dashboard > .overview-circle{
+    display:flex;
+    gap:3rem;
+}
+
+.dashboard > .overview-circle>.orderCount , 
+.dashboard > .overview-circle>.userCount , 
+.dashboard > .overview-circle>.productCount {
+    /* border:1px solid black; */
+    height:15rem;
+    width:15rem;
+    border-radius:50%;
+    display:flex;
+    justify-content: center;
+align-items: center;
+flex-direction: column;
+box-shadow: 0px 0px 30px gray;
+
+}
+
+.dashboard > .overview-circle>.orderCount>b , 
+.dashboard > .overview-circle>.userCount>b , 
+.dashboard > .overview-circle>.productCount>b {
+    font-size:1.6rem;
+    font-weight: 550;
+    color:rgba(0,0,0,0.6);
+}
+.dashboard > .overview-circle>.orderCount>span , 
+.dashboard > .overview-circle>.userCount>span, 
+.dashboard > .overview-circle>.productCount>span {
+    font-size: 3rem;
+}
+
+
+

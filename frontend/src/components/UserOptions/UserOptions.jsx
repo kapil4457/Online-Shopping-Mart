@@ -29,7 +29,7 @@ const UserOptions = ({ user }) => {
   const adminAction = [
     {
       name: "DashBoard",
-      link: "/dashboard",
+      link: "/admin/dashboard",
       icon: <DashboardIcon />,
     },
   ];

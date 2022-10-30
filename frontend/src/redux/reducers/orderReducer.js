@@ -11,7 +11,10 @@ ORDER_DETAILS_REQUEST,
 ORDER_DETAILS_SUCCESS,
 ORDER_CANCEL_FAIL,
 ORDER_CANCEL_REQUEST,
-ORDER_CANCEL_SUCCESS
+ORDER_CANCEL_SUCCESS,
+GET_ALL_ORDERS_ADMIN_REQUEST,
+GET_ALL_ORDERS_ADMIN_SUCCESS,
+GET_ALL_ORDERS_ADMIN_FAIL
     } from '../constants/orderConstant'
 
 
@@ -136,3 +139,36 @@ ORDER_CANCEL_SUCCESS
                 return state;
         }
     };
+
+
+    export const getAllOrdersAdmin = (state=[] , action)=>{
+        switch(action.type){
+            case  GET_ALL_ORDERS_ADMIN_REQUEST : 
+                    return {
+                        loading:true,
+                        ...state,
+                    }
+            case GET_ALL_ORDERS_ADMIN_SUCCESS :
+                return {
+                    loading : false,
+                    order : action.payload,
+                }
+            
+
+            case GET_ALL_ORDERS_ADMIN_FAIL :
+                return {
+                    loading :false,
+                    error:action.payload,
+                }
+
+            case CLEAR_ERRORS :
+                return{
+                    loading: false,
+                    error:null,
+                    ...state
+                }
+                default:
+                    return state;
+
+        }
+    }

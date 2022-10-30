@@ -12,7 +12,10 @@ ORDER_DETAILS_SUCCESS,
 CLEAR_ERRORS,
 ORDER_CANCEL_FAIL,
 ORDER_CANCEL_REQUEST,
-ORDER_CANCEL_SUCCESS
+ORDER_CANCEL_SUCCESS,
+GET_ALL_ORDERS_ADMIN_FAIL,
+GET_ALL_ORDERS_ADMIN_REQUEST,
+GET_ALL_ORDERS_ADMIN_SUCCESS
 } from '../constants/orderConstant'
 
 
@@ -119,3 +122,20 @@ export const clearErrors = () => async (dispatch) => {
 	});
     
 };
+
+
+// Get all Orders (Admin)
+
+export const getAllOrder = () => async (dispatch)=>{
+	try{
+
+		dispatch({type: GET_ALL_ORDERS_ADMIN_REQUEST})
+		
+		const {data} = await axios.get('/api/v1/admin/orders');
+		dispatch({type:GET_ALL_ORDERS_ADMIN_SUCCESS ,payload:data})
+	}catch(error){
+		dispatch({type:GET_ALL_ORDERS_ADMIN_FAIL ,payload:error}) ;
+	}
+
+
+}

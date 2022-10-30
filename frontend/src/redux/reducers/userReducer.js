@@ -16,7 +16,10 @@ import {LOGIN_FAIL,
 	UPDATE_SUCCESS,
 	UPDATE_PASSWORD_FAIL,
 	UPDATE_PASSWORD_SUCCESS,
-	UPDATE_PASSWORD_REQUEST
+	UPDATE_PASSWORD_REQUEST,
+	GET_ALL_USER_SUCCESS,
+	GET_ALL_USER_FAIL,
+	GET_ALL_USER_REQUEST
 } from '../constants/userConstants'
 
 
@@ -25,6 +28,7 @@ export const userReducer = (state = { user: {} }, action) => {
 		case LOGIN_REQUEST :
           case LOAD_REQUEST:
 		case REGISTER_REQUEST:
+			case GET_ALL_USER_REQUEST:
 			return {
 				loading: true,
 				isAuthenticated: false,
@@ -40,9 +44,21 @@ export const userReducer = (state = { user: {} }, action) => {
 				user : action.payload,
 			};
 
+			case GET_ALL_USER_SUCCESS:
+				return{
+					...state,
+					loading:false,
+					users: action.payload
+				}
+				case GET_ALL_USER_FAIL:
+					return {
+						loading:false,
+						error: action.payload,
+					}
 
 		case LOGIN_FAIL :
 		case REGISTER_FAIL:
+
 			return {
 				...state,
 				loading: false,

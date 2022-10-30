@@ -18,6 +18,8 @@ import ShippingInfo from './components/ShippingInfo/ShippingInfo';
 import ConfirmOrder from './components/ConfirmOrder/ConfirmOrder';
 import OrderSuccess from './components/OrderSuccess/OrderSuccess';
 import UserOptions from './components/UserOptions/UserOptions';
+import Dashboard from './components/DashBoard/Dashboard';
+import Products from './components/Products/Products';
 
 // kapilsoni54768161@gmail.com
 
@@ -49,6 +51,8 @@ import UserOptions from './components/UserOptions/UserOptions';
     <Route path='/shipping/info' element={<ShippingInfo />}  />
     <Route path='/order/confirm' element={<ConfirmOrder />}  />
     <Route path='/order/placed' element={<OrderSuccess />}  />
+    <Route path='/admin/dashboard' element={<Dashboard />}  />
+    <Route path='/admin/products' element={<Products />}  />
     
     </Routes>
    

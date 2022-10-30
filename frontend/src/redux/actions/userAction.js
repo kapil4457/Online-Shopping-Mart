@@ -17,7 +17,10 @@ UPDATE_REQUEST,
 UPDATE_SUCCESS,
 UPDATE_PASSWORD_FAIL,
 UPDATE_PASSWORD_SUCCESS,
-UPDATE_PASSWORD_REQUEST
+UPDATE_PASSWORD_REQUEST,
+GET_ALL_USER_FAIL,
+GET_ALL_USER_REQUEST,
+GET_ALL_USER_SUCCESS
 }from '../constants/userConstants'
 
 
@@ -112,5 +115,17 @@ export const updatePassword = (userData) => async (dispatch) => {
 		await dispatch({ type: UPDATE_PASSWORD_SUCCESS ,payload : data.user});
 	} catch (error) {
 		await dispatch({ type: UPDATE_PASSWORD_FAIL, payload: error.response.data.message });
+	}
+};
+
+
+export const getAllUser = ()=>async(dispatch)=>{
+	try{
+		await dispatch({type : GET_ALL_USER_REQUEST});
+
+		const {data} = await axios.get('/api/v1/admin/users');
+		await dispatch({type:GET_ALL_USER_SUCCESS , payload : data})
+	}catch(error){
+			await dispatch({ type: GET_ALL_USER_FAIL, payload: error});
 	}
 };

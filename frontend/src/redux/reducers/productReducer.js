@@ -1,4 +1,12 @@
-import {SEARCH_PRODUCT_FAIL,SEARCH_PRODUCT_REQUEST,SEARCH_PRODUCT_SUCCESS,CLEAR_ERRORS} from '../constants/productConstant'
+import {
+    SEARCH_PRODUCT_FAIL,
+    SEARCH_PRODUCT_REQUEST,
+    SEARCH_PRODUCT_SUCCESS,
+    GET_PRODUCTS_FAIL,
+    GET_PRODUCTS_SUCCESS,
+    GET_PRODUCTS_REQUEST,
+    CLEAR_ERRORS
+} from '../constants/productConstant'
 
 
 
@@ -33,4 +41,36 @@ export const searchItem = (state = {} , action)=>{
             }
 
     
+}
+
+export const getAllPoducts = (state={} , action)=>{
+    switch(action.type){
+        case GET_PRODUCTS_REQUEST:
+            return{
+                ...state,
+                loading:true,
+            }
+        
+            case GET_PRODUCTS_SUCCESS :
+                return{
+                    loading:false,
+                    products : action.payload
+                }
+            
+        case GET_PRODUCTS_FAIL : 
+        return{
+            loading:false,
+            error:action.payload,
+        }
+
+        case CLEAR_ERRORS :
+            return{
+                loading : false,
+                error:null
+            }
+         default :
+            return {
+                ...state
+            }
+    }
 }

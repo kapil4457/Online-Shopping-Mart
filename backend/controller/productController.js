@@ -33,7 +33,21 @@ try{
    }
 	})
 
-	await res.status(200).send({success: true, products})
+			  
+    const t1 = new Set();
+
+    products.forEach((item) => {
+      t1.add(item.brand);
+    });
+
+    const t2 = [];
+    t1.forEach((item) => {
+      t2.push({ name: item });
+    });
+
+	
+
+	await res.status(200).send({success: true, products , allBrands:t2})
 
 
 }catch(err){
@@ -47,6 +61,8 @@ exports.getDealsOfTheDay = async(req,res,next)=>{
 	try{
 
 		let products = await Product.find({dealOfTheDay : true});
+
+
 		await res.status(200).json({success: true, products});
 	}catch(err){
 		await res.status(500).json({success: false, message: err.message});
@@ -215,7 +231,21 @@ exports.getProductDetails = (async (req, res, next) => {
 exports.getLatest = async(req,res,next)=>{
 	try{
 		const products = await Product.find({id:-1}).limit(20);
-		await res.status(200).send({success:true , products});
+				  
+		const t1 = new Set();
+
+		products.forEach((item) => {
+		  t1.add(item.brand);
+		});
+	
+		const t2 = [];
+		t1.forEach((item) => {
+		  t2.push({ name: item });
+		});
+	
+		setAllBrands(t2);
+	  
+		await res.status(200).send({success:true , products,allBrands:t2});
 		return
 
 	}catch(err){

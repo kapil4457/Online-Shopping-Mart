@@ -37,54 +37,61 @@ const MyOrders = () => {
           <h2>My Orders</h2>
           <div className="order-items">
             <div className="left-order-items">
-              {orders?.map((item, key) => (
-                <div key={key} className="order-card">
-                  <div
-                    onClick={async () => {
-                      setItemToDisplay(item);
-                      setOrderItemToDisplay(item?.orderItems);
-                    }}
-                  >
-                    <div>
-                      <b>Total : </b>
-                      <span>₹ {item.itemsPrice}</span>
-                    </div>
-                    <div>
-                      <b>Number of Items : </b>
-                      <span>{item.orderItems.length}</span>
-                    </div>
-                    <div>
-                      <b>Ordered on : </b>
-                      <span>{item.createdAt.substring(0, 10)}</span>
-                    </div>
-                    <div>
-                      <b>Order Status : </b>
-                      <span
-                        style={{
-                          color:
-                            item.orderStatus == "Cancelled" ? "red" : "green",
-                          fontWeight: 650,
-                        }}
-                      >
-                        {item.orderStatus}
-                      </span>
-                    </div>
-                  </div>
-                  {item.orderStatus === "Cancelled" ? (
-                    <></>
-                  ) : (
-                    <button
-                      onClick={() => {
-                        dispatch(cancelOrder(item._id));
-                        window.location.reload();
+              {orders.length !== 0 &&
+                orders?.map((item, key) => (
+                  <div key={key} className="order-card">
+                    <div
+                      onClick={async () => {
+                        setItemToDisplay(item);
+                        setOrderItemToDisplay(item?.orderItems);
                       }}
                     >
-                      <CancelOutlinedIcon />
-                      Cancel
-                    </button>
-                  )}
-                </div>
-              ))}
+                      <div>
+                        <b>Total : </b>
+                        <span>₹ {item.itemsPrice}</span>
+                      </div>
+                      <div>
+                        <b>Number of Items : </b>
+                        <span>{item.orderItems.length}</span>
+                      </div>
+                      <div>
+                        <b>Ordered on : </b>
+                        <span>{item.createdAt.substring(0, 10)}</span>
+                      </div>
+                      <div>
+                        <b>Order Status : </b>
+                        <span
+                          style={{
+                            color:
+                              item.orderStatus == "Cancelled" ? "red" : "green",
+                            fontWeight: 650,
+                          }}
+                        >
+                          {item.orderStatus}
+                        </span>
+                      </div>
+                    </div>
+                    {item.orderStatus === "Cancelled" ? (
+                      <></>
+                    ) : (
+                      <button
+                        onClick={() => {
+                          dispatch(cancelOrder(item._id));
+                          window.location.reload();
+                        }}
+                      >
+                        <CancelOutlinedIcon />
+                        Cancel
+                      </button>
+                    )}
+                  </div>
+                ))}
+
+              {orders?.length === 0 ? (
+                <div className="no-orders">No Orders to display</div>
+              ) : (
+                <></>
+              )}
             </div>
             <div className="right-order-items">
               {itemToDisplay == null ? (

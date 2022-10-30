@@ -21,6 +21,16 @@
     height:82vh;
     
 }
+.no-orders{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size:2.5rem;
+    color:red;
+    font-weight:650
+}
 
 .my-orders-main > .order-items > .left-order-items{
     display:flex;

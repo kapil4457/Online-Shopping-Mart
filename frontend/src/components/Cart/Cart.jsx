@@ -24,15 +24,15 @@ const Cart = () => {
       );
       const t1 = t * 0.18;
       setSubTotal(t);
-      setGST(t1);
+      setGST(Math.round(t1));
 
-      setTotal(t + t1);
+      setTotal(Math.round(t + t1));
     }
   };
 
   useEffect(() => {
     getData();
-  }, [navigate]);
+  }, [navigate, data]);
   return (
     <>
       {data.length == 0 ? (

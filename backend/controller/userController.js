@@ -185,3 +185,13 @@ exports.updateProfile = (async (req, res, next) => {
 });
 
 
+
+exports.getAllUsers = async(req,res,next)=>{
+    try{
+        const users = await User.find();
+        const userCount =await  users.length;
+        res.status(200).send({success:true , users,userCount})
+    }catch(error){
+        res.status(400).send({success : false , message : err.message})
+    }
+}

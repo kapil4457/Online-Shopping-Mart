@@ -8,7 +8,8 @@
 
 
 .main-search-page{
-    display:flex;
+    display:grid;
+    grid-template-columns: 20% 1fr;
 }
 
 .main-search-result{
@@ -80,7 +81,7 @@ color:white;
 
 .main-search-page > .filters{
     height:80vh;
-    width:23%;
+    width:100%;
     padding:0 1rem;
 }
 

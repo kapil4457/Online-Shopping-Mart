@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
+import Loading from "../Loader/Loading.jsx";
 import SeearchCardResult from "./SearchCardResult.jsx";
 
-const SearchPageResult = ({ data, range, brand }) => {
+const SearchPageResult = ({ data, range, brand, loading }) => {
   let params = useParams();
   const navigate = useNavigate();
   const filtering = (val) => {
@@ -15,31 +16,39 @@ const SearchPageResult = ({ data, range, brand }) => {
     }
     return false;
   };
-  useEffect(() => {}, [data, range]);
+  useEffect(() => {}, [data?.products, range, brand]);
   return (
-    <div className="heading-search-result">
-      <div className="main-search-result">
-        <h2>Search Result for '{params.name}'</h2>
-      </div>
-      {data.length == 0 ? (
-        <div className="no-items">
-          <p>No Items</p>
-          <button
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            Continue Shopping
-          </button>
+    <>
+      {loading == true ? (
+        <div className="loader">
+          <Loading />
         </div>
       ) : (
-        <div className="searchResultCard">
-          {data.filter(filtering).map((item, key) => (
-            <SeearchCardResult data={item} key={key} />
-          ))}
+        <div className="heading-search-result">
+          <div className="main-search-result">
+            <h2>Search Result for '{params.name}'</h2>
+          </div>
+          {data?.length == 0 ? (
+            <div className="no-items">
+              <p>No Items</p>
+              <button
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                Continue Shopping
+              </button>
+            </div>
+          ) : (
+            <div className="searchResultCard">
+              {data?.filter(filtering).map((item, key) => (
+                <SeearchCardResult data={item} key={key} />
+              ))}
+            </div>
+          )}
         </div>
       )}
-    </div>
+    </>
   );
 };
 

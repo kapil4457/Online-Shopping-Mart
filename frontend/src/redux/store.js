@@ -1,5 +1,6 @@
 import {  configureStore} from '@reduxjs/toolkit'
 import { createOrderReducer, myOrdersReducer } from './reducers/orderReducer'
+import { searchItem } from './reducers/productReducer'
 import { profileReducer, userReducer } from './reducers/userReducer'
 
 
@@ -12,7 +13,8 @@ export default configureStore({
         user : userReducer,
         profile : profileReducer,
         createOrder : createOrderReducer,
-        myOrder : myOrdersReducer
+        myOrder : myOrdersReducer,
+        searchItem : searchItem
     }    ,
     middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

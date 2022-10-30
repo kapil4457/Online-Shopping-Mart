@@ -10,18 +10,19 @@ import Cart from './components/Cart/Cart';
 import Login from './components/Login/Login';
 import Account from './components/Account/Account';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loadUser } from './redux/actions/userAction';
 import UpdatePassword from './components/updatePassword/UpdatePassword';
 import MyOrders from './components/myOrders/MyOrders';
 import ShippingInfo from './components/ShippingInfo/ShippingInfo';
 import ConfirmOrder from './components/ConfirmOrder/ConfirmOrder';
 import OrderSuccess from './components/OrderSuccess/OrderSuccess';
+import UserOptions from './components/UserOptions/UserOptions';
 
 // kapilsoni54768161@gmail.com
 
   function App() {
-   
+   const {user} = useSelector(state => state.user)
     const dispatch  = useDispatch();
     useEffect(() => {
       dispatch(loadUser());
@@ -50,7 +51,11 @@ import OrderSuccess from './components/OrderSuccess/OrderSuccess';
     <Route path='/order/placed' element={<OrderSuccess />}  />
     
     </Routes>
+   
+      {user ? <UserOptions user={user}/> : <></>}
+    
 <Footer />
+
     </>
   );
 }

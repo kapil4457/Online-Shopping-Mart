@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Header.css";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
@@ -128,12 +128,14 @@ const Header = () => {
                   type="text"
                   placeholder="Search Items"
                   value={`${searchItem}`}
+                  id="myInput"
                   onChange={(e) => setSearchItem(e.target.value)}
                 />
                 <div>
                   <SearchOutlinedIcon
                     onClick={sendRequest}
                     style={{ cursor: "pointer" }}
+                    id="myBtn"
                   />
                 </div>
               </div>

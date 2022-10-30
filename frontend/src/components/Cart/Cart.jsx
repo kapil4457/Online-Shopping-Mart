@@ -10,7 +10,7 @@ const Cart = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [GST, setGST] = useState();
-  const [Subtotal, setSubTotal] = useState();
+  const [subtotal, setSubTotal] = useState();
   const [total, setTotal] = useState();
 
   const getData = async () => {
@@ -18,20 +18,21 @@ const Cart = () => {
       var tempD = JSON.parse(localStorage.getItem("cartItems"));
       setData(tempD);
 
-      var temp = 0;
-      data.forEach((item) => {
-        temp += item.quantity * item.price;
-      });
-      setSubTotal(temp);
-      setGST(temp * 0.18);
+      const t = tempD.reduce(
+        (acc, item) => acc + item.quantity * item.price,
+        0
+      );
+      const t1 = t * 0.18;
+      setSubTotal(t);
+      setGST(t1);
 
-      setTotal(temp + GST);
+      setTotal(t + t1);
     }
   };
 
   useEffect(() => {
     getData();
-  }, [data]);
+  }, [navigate]);
   return (
     <>
       {data.length == 0 ? (
@@ -57,7 +58,7 @@ const Cart = () => {
             <div className="total-card">
               <div>
                 <b>Subtotal : </b>
-                <p>{Subtotal}</p>
+                <p>{subtotal}</p>
               </div>
               <div>
                 <b>GST : </b>

@@ -8,6 +8,10 @@
     padding: 5vmax;
     padding-bottom: 0;
 }
+.ConfirmShippingAreaBox> div{
+    display: flex;
+    gap:1rem;
+}
 .ConfirmShippingArea > p{
     font: 400 1.8vmax "Roboto";
 

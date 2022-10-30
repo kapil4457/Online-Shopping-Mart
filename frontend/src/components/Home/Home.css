@@ -14,8 +14,8 @@
 .latest-appliances , .mens-fashion , .womens-store , .deals-on-beauty{
     width:30rem;
     height:26rem;
-    /* border:1px solid black; */
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.14);
+
     display:flex;
     flex-direction:column;
     align-items: center;
@@ -34,6 +34,9 @@
     text-decoration: none;
     color:black;
 }
+.latest-appliances >.appliances-category >a>img , .mens-fashion >.categories >a>img , .womens-store >.womens-clothing >a>img, .deals-on-beauty > .womens-clothing > a>img{
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+}
 .latest-appliances > .appliances-category , .womens-clothing{
     display:grid;
     grid-template-columns: 1fr 1fr;
@@ -44,14 +47,13 @@
 .main-body-home > .smart-tv{
     width:30rem;
     height:26rem;
-        /* border:1px solid black; */
-        box-shadow: 0px 0px 10px rgba(0,0,0,0.6);
         display:flex;
         flex-direction:column;
         align-items: center;
         gap:1rem;
         padding:1rem 0;
         border-radius:5px;
+        background: rgba(0,0,0,0.1);
 
 
 
@@ -64,9 +66,11 @@
 }
 .main-body-home > .smart-tv >a>img{
     width:28rem;
-    height:21rem;
+    height:20rem;
     object-fit: cover;
     border-radius:5px;
+    box-shadow: 0px 5px 5px rgba(0,0,0,0.3);
+
 
 }
 
@@ -88,7 +92,7 @@
 .slider > .swiper{
     height:90%;
     width:78%;
-    box-shadow:0 0px 10px rgba(0,0,0,0.7);
+    box-shadow:0px 0px 10px rgba(0,0,0,0.7)  ;
     border-radius:5px;
 }
 

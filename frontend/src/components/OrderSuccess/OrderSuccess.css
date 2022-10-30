@@ -1,0 +1,31 @@
+.order-placed-main{
+    display:flex;
+    min-height:82vh;
+    justify-content: center;
+    align-items:center;
+    gap:2rem;
+    flex-direction: column;
+}
+.order-placed-main > div{
+    height:15rem;
+}
+.order-placed-main > div>svg{
+    font-size:15rem;
+    color:green;
+}
+
+.order-placed-main > p{
+    font-size:3rem;
+    font-weight:550;
+}
+.order-placed-main>button{
+    height:3.5rem;
+    font-size:1.4rem;
+    width:15rem;
+    background-color: rgb(248, 90, 33);
+    border-radius: 10px;
+    cursor:pointer;
+    color:aliceblue;
+    font-weight: 550;
+}
+

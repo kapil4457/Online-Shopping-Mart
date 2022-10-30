@@ -65,6 +65,7 @@ const Shipping = () => {
             <div>
               <HomeIcon />
               <input
+                className="input"
                 type="text"
                 placeholder="Address"
                 required
@@ -75,6 +76,7 @@ const Shipping = () => {
             <div>
               <LocationCityIcon />
               <input
+                className="input"
                 type="text"
                 placeholder="City"
                 required
@@ -85,6 +87,7 @@ const Shipping = () => {
             <div>
               <PinDropIcon />
               <input
+                className="input"
                 type="text"
                 placeholder="Pin Code"
                 required
@@ -95,6 +98,7 @@ const Shipping = () => {
             <div>
               <PhoneIcon />
               <input
+                className="input"
                 type="text"
                 placeholder="Phone Number"
                 required

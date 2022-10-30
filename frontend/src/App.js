@@ -16,6 +16,7 @@ import UpdatePassword from './components/updatePassword/UpdatePassword';
 import MyOrders from './components/myOrders/MyOrders';
 import ShippingInfo from './components/ShippingInfo/ShippingInfo';
 import ConfirmOrder from './components/ConfirmOrder/ConfirmOrder';
+import OrderSuccess from './components/OrderSuccess/OrderSuccess';
 
 // kapilsoni54768161@gmail.com
 
@@ -46,6 +47,7 @@ import ConfirmOrder from './components/ConfirmOrder/ConfirmOrder';
     <Route path='/my-orders' element={<MyOrders />}  />
     <Route path='/shipping/info' element={<ShippingInfo />}  />
     <Route path='/order/confirm' element={<ConfirmOrder />}  />
+    <Route path='/order/placed' element={<OrderSuccess />}  />
     
     </Routes>
 <Footer />

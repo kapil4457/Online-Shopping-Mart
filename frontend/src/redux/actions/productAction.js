@@ -95,7 +95,7 @@ export const createProduct = ({data})=>async(dispatch)=>{
 
             const res = await axios.post(`/api/v1/admin/createProduct` , data,config);
             dispatch({type:CREATE_ORDER_SUCCESS , payload:res})
-        },5000)
+        },2000)
     }catch(error){
         dispatch({type:CREATE_PRODUCT_FAIL , error:error.message})
         

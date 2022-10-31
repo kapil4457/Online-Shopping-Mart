@@ -13,7 +13,7 @@ const Slider = ({ data }) => {
         grabCursor={true}
         modules={[FreeMode]}
         className="mySwiper"
-        slidesPerView={5}
+        slidesPerView={3}
         spaceBetween={30}
         autoplay={true}
       >

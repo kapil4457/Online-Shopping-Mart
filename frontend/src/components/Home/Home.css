@@ -98,12 +98,16 @@
 
 .small-card{
     height:100%;
-    width:18rem;
+    width:30rem;
     display:flex;
     justify-content: center;
     align-items: center;
 }
 
+.small-card > img{
+    height:100%;
+
+}
 .block-buster , .kitchen-items {
     display:flex;
     gap:2rem;

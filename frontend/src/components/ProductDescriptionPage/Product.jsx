@@ -4,9 +4,6 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router";
-import i1 from "./ac.jpg";
-import i2 from "./fridge.jpg";
-import i4 from "./television.jpg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ChevronLeftOutlinedIcon from "@mui/icons-material/ChevronLeftOutlined";
@@ -92,7 +89,7 @@ const Product = () => {
           <div
             className="rightBtn"
             onClick={() => {
-              if (transform == -80) {
+              if (transform == -((data?.images?.length - 1) * 40)) {
                 return;
               }
               var temp = transform;
@@ -106,9 +103,9 @@ const Product = () => {
             className="main-carousal"
             style={{ transform: `translateX(${transform}vw)` }}
           >
-            <img src={`${i1}`} alt="" />
-            <img src={`${i2}`} alt="" />
-            <img src={`${i4}`} alt="" />
+            {data?.images?.map((i) => (
+              <img src={`${i.url}`} alt="" />
+            ))}
           </div>
         </div>
       </div>

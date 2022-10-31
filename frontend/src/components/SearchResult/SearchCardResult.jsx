@@ -23,7 +23,7 @@ const SearchCardResult = ({ data }) => {
         <div className="dealOfTheDay" style={{ display: `${dis} ` }}>
           <h2>Deal of The Day</h2>
         </div>
-        <img src={`${itemImage}`} alt="" />
+        <img src={`${data.images[0].url}`} alt="" />
 
         <div className="item-name">
           <p className="head">Item Name </p>

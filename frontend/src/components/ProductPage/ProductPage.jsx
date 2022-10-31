@@ -14,7 +14,6 @@ import bag from "./bags.jpg";
 import { deleteProduct } from "../../redux/actions/productAction";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
-// import { cloudinary } from "cloudinary";
 const ProductPage = () => {
   const { loading, products } = useSelector((state) => state.getAllProducts);
   const updatedData = useSelector((state) => state.updateProduct);
@@ -116,8 +115,13 @@ const ProductPage = () => {
     console.log("In the frontend", formData.images);
     setTimeout(() => {
       dispatch(createProduct({ data: formData }));
-    }, 5000);
-    toast("Product Created Successfully");
+    }, 2000);
+
+    setTimeout(() => {
+      toast("Product Created Successfully");
+      window.reload();
+    }, 9000);
+    toast("Please wait...");
     setDisplay2("none");
   };
   return (
@@ -274,7 +278,7 @@ const ProductPage = () => {
                   key={key}
                 >
                   <NavLink to={`/products/item/${item._id}`}>
-                    <img src={bag} alt="" />
+                    <img src={item.images[0].url} alt="" />
                   </NavLink>
                   <div className="information">
                     <div className="data">

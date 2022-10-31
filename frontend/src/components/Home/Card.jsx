@@ -10,7 +10,7 @@ const Card = ({ data }) => {
         navigate(`/products/item/${data._id}`);
       }}
     >
-      <img src="logo.png" alt="" />
+      <img src={`${data?.images[0]?.url}`} alt="" />
     </div>
   );
 };

@@ -60,6 +60,8 @@ gap:2rem;
 .main-cart > .left-cart > .cart-card > img{
     
     border-radius:10px 0 0 10px;
+    height:100%;
+    max-width:30%;
 }
 
 .main-cart > .left-cart > .cart-card >.f{

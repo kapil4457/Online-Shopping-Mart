@@ -33,7 +33,7 @@ const CartCard = ({ item }) => {
   }, [quan, item.quan, item.price]);
   return (
     <div className="cart-card">
-      <img src={i1} alt="" />
+      <img src={item?.images[0]?.url} alt="" />
       <div className="f">
         <div>
           <p>Name :</p>

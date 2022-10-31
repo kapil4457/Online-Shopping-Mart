@@ -368,9 +368,8 @@ const ProductPage = () => {
               </div>
               <div>
                 <label htmlFor="">Description </label>
-                <input
-                  type="text"
-                  placeholder="Enter Updated Description"
+                <textarea
+                  rows="4"
                   value={data?.description}
                   onChange={(e) =>
                     setData({ ...data, description: e.target.value })

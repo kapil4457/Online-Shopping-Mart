@@ -8,7 +8,13 @@ import {
     CLEAR_ERRORS,
     DELETE_PRODUCT_FAIL,
     DELETE_PRODUCT_REQUEST,
-    DELETE_PRODUCT_SUCCESS
+    DELETE_PRODUCT_SUCCESS,
+    PRODUCT_UPDATE_REQUEST,
+    PRODUCT_UPDATE_SUCCESS,
+    PRODUCT_UPDATE_FAIL,
+    CREATE_PRODUCT_FAIL,
+    CREATE_PRODUCT_REQUEST,
+    CREATE_PRODUCT_SUCCESS
 } from '../constants/productConstant'
 
 
@@ -94,6 +100,72 @@ export const deleteProduct = (state={} , action)=>{
                 }
             
         case DELETE_PRODUCT_FAIL : 
+        return{
+            loading:false,
+            error:action.payload,
+        }
+
+        case CLEAR_ERRORS :
+            return{
+                loading : false,
+                error:null
+            }
+         default :
+            return {
+                ...state
+            }
+    }
+}
+
+
+export const updateProduct = (state={} , action)=>{
+    switch(action.type){
+        case PRODUCT_UPDATE_REQUEST:
+            return{
+                ...state,
+                loading:true,
+            }
+        
+            case PRODUCT_UPDATE_SUCCESS :
+                return{
+                    loading:false,
+                    products : action.payload
+                }
+            
+        case PRODUCT_UPDATE_FAIL : 
+        return{
+            loading:false,
+            error:action.payload,
+        }
+
+        case CLEAR_ERRORS :
+            return{
+                loading : false,
+                error:null
+            }
+         default :
+            return {
+                ...state
+            }
+    }
+}
+
+
+export const createProduct  = (state={} , action)=>{
+    switch(action.type){
+        case CREATE_PRODUCT_REQUEST:
+            return{
+                ...state,
+                loading:true,
+            }
+        
+            case CREATE_PRODUCT_SUCCESS :
+                return{
+                    loading:false,
+                    products : action.payload
+                }
+            
+        case CREATE_PRODUCT_FAIL : 
         return{
             loading:false,
             error:action.payload,

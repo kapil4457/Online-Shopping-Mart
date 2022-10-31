@@ -3,23 +3,123 @@ import "./ProductPage.css";
 import Sidebar from "../SideBar/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../Loader/Loading";
-import { getAllProducts } from "../../redux/actions/productAction";
+import CloseIcon from "@mui/icons-material/Close";
+import {
+  createProduct,
+  getAllProducts,
+  updateProduct,
+} from "../../redux/actions/productAction";
 import { NavLink } from "react-router-dom";
 import bag from "./bags.jpg";
 import { deleteProduct } from "../../redux/actions/productAction";
-
+import { toast, ToastContainer } from "react-toastify";
+import axios from "axios";
+// import { cloudinary } from "cloudinary";
 const ProductPage = () => {
   const { loading, products } = useSelector((state) => state.getAllProducts);
+  const updatedData = useSelector((state) => state.updateProduct);
   const [display, setDisplay] = useState("none");
-  // console.log(products?.products);
+  const [display2, setDisplay2] = useState("none");
+
+  const [files, setFiles] = useState(null);
+
+  const handleFile = (e) => {
+    const files = Array.from(e.target.files);
+
+    setFiles([]);
+
+    files.forEach((file) => {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setFiles((old) => [...old, reader.result]);
+        }
+      };
+
+      reader.readAsDataURL(file);
+    });
+  };
 
   const [data, setData] = useState({});
-  const dispatch = useDispatch();
 
+  const [newData, setNewData] = useState({});
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProducts());
-  }, [dispatch]);
+  }, [dispatch, updatedData?.products]);
 
+  const createProductFunc = async () => {
+    if (
+      newData.name === "" ||
+      newData.brand === "" ||
+      newData.description === "" ||
+      newData.category === "" ||
+      newData.subCategory === "" ||
+      newData.dealOfTheDay == "" ||
+      !files ||
+      !newData.price ||
+      !newData.Stock
+    ) {
+      toast("Please Fill in all the details");
+      return;
+    }
+
+    if (newData.price <= 0) {
+      toast("Price can not be less  than 1");
+      return;
+    }
+
+    if (newData.Stock <= 0) {
+      toast("Stock can not be less than 1");
+    }
+
+    if (newData.dealOfTheDay !== "true" && newData.dealOfTheDay !== "false") {
+      toast("Deal of the day can either be true or false");
+
+      return;
+    }
+
+    let links = [];
+    files.forEach(async (file) => {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "wgk9k2lo");
+
+      const { data } = await axios.post(
+        "https://api.cloudinary.com/v1_1/ds82kuoet/image/upload",
+        formData
+      );
+
+      let thisData = {
+        public_id: data.public_id,
+        url: data.url,
+      };
+      links.push(thisData);
+    });
+
+    const formData = {
+      name: newData.name,
+      brand: newData.brand,
+      price: newData.price,
+      description: newData.description,
+      category: newData.category,
+      subCategory: newData.subCategory,
+      Stock: newData.Stock,
+      dealOfTheDay: newData.dealOfTheDay,
+      images: links,
+    };
+
+    while (!formData.images) {
+      console.log("uploading images...");
+    }
+    console.log("In the frontend", formData.images);
+    setTimeout(() => {
+      dispatch(createProduct({ data: formData }));
+    }, 5000);
+    toast("Product Created Successfully");
+    setDisplay2("none");
+  };
   return (
     <>
       {loading === true ? (
@@ -27,12 +127,144 @@ const ProductPage = () => {
       ) : (
         <div className="main-product-page-admin">
           <Sidebar />
+          <div
+            className="createProductPage"
+            style={{ display: ` ${display2}` }}
+          >
+            <div className="updateCard">
+              <CloseIcon
+                onClick={() => {
+                  setDisplay2("none");
+                  setNewData({});
+                  setFiles([]);
+                }}
+              />
+              <div>
+                <div>
+                  <label htmlFor="">
+                    <b>Name</b>
+                  </label>
+                  <input
+                    type="text"
+                    value={newData.name}
+                    onChange={(e) => {
+                      setNewData({ ...newData, name: e.target.value });
+                    }}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="">
+                    <b>Brand</b>
+                  </label>
+                  <input
+                    type="text"
+                    value={newData.brand}
+                    onChange={(e) => {
+                      setNewData({ ...newData, brand: e.target.value });
+                    }}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="">
+                    {" "}
+                    <b>Description</b>{" "}
+                  </label>
+                  <textarea
+                    rows="5"
+                    value={newData.description}
+                    onChange={(e) => {
+                      setNewData({ ...newData, description: e.target.value });
+                    }}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="">
+                    <b>Price</b>
+                  </label>
+                  <input
+                    type="number"
+                    value={newData.price}
+                    onChange={(e) => {
+                      setNewData({ ...newData, price: e.target.value });
+                    }}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="">
+                    <b>Category</b>
+                  </label>
+                  <input
+                    type="text"
+                    value={newData.category}
+                    onChange={(e) => {
+                      setNewData({ ...newData, category: e.target.value });
+                    }}
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  <label htmlFor="">
+                    <b>Sub Category</b>
+                  </label>
+                  <input
+                    type="text"
+                    value={newData.subCategory}
+                    onChange={(e) => {
+                      setNewData({ ...newData, subCategory: e.target.value });
+                    }}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="">
+                    <b>Stock</b>
+                  </label>
+                  <input
+                    type="number"
+                    value={newData.Stock}
+                    onChange={(e) => {
+                      setNewData({ ...newData, Stock: e.target.value });
+                    }}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="">
+                    <b>Deal Of The Day</b>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Enter true or false"
+                    value={newData.dealOfTheDay}
+                    onChange={(e) => {
+                      setNewData({ ...newData, dealOfTheDay: e.target.value });
+                    }}
+                  />
+                </div>
+                <div>
+                  <b>Select Images</b>
+                  <label onChange={handleFile}>
+                    <input type="file" multiple="multiple" />
+                  </label>
+                </div>
+                <button onClick={createProductFunc}>Create</button>
+              </div>
+            </div>
+          </div>
           <div className="products">
             <div className="heading">
-              <h1>All Products</h1>
               <div>
-                <b>Product Count : </b> {products?.productCount}
+                <h1>All Products</h1>
+                <div>
+                  <b>Product Count : </b> {products?.productCount}
+                </div>
               </div>
+              <button
+                onClick={() => {
+                  setDisplay2("block");
+                }}
+              >
+                Create Product
+              </button>
             </div>
             <div className="products-grid">
               {products?.products?.map((item, key) => (
@@ -158,7 +390,7 @@ const ProductPage = () => {
                 <input
                   type="text"
                   placeholder="Enter Updated Price"
-                  value={`₹ ${data?.price}`}
+                  value={`${data?.price}`}
                   onChange={(e) => setData({ ...data, price: e.target.value })}
                 />
               </div>
@@ -173,9 +405,16 @@ const ProductPage = () => {
                   }
                 />
               </div>
-              <button>Update</button>
+              <button
+                onClick={() => {
+                  dispatch(updateProduct(data));
+                }}
+              >
+                Update
+              </button>
             </div>
           </div>
+          <ToastContainer />
         </div>
       )}
     </>

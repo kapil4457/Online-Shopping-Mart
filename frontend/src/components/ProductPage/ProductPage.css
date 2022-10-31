@@ -13,8 +13,25 @@
 
 .main-product-page-admin > .products >.heading{
     display:flex;
-    flex-direction: column;
-    gap:0.5rem;
+    justify-content: space-between;
+}
+.main-product-page-admin > .products >.heading>button{
+    border:1px solid green;
+    width:10rem;
+    height:3rem;
+    align-self: center;
+    color:green;
+    font-size:1.2rem;
+    font-weight:550;
+    cursor:pointer;
+    transition: all 0.3s;
+    border-radius: 10px;
+
+
+}
+.main-product-page-admin > .products >.heading>button:hover{
+    color:white;
+    background-color: green;
 }
 .main-product-page-admin > .products >.heading>h1{
     font-size:3rem;
@@ -108,7 +125,7 @@
     position:fixed;
     display:flex;
     flex-direction: column;
-    top:15rem;
+    top:20rem;
     right:8rem;
     gap:2rem;
     padding-left:2rem;
@@ -148,4 +165,81 @@
         background-color: green;
         color:white;
 
+    }
+
+
+.main-product-page-admin > .createProductPage{
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right: 0;
+   background-color: rgba(0,0,0,0.5);
+   z-index: 99999999;
+   
+   
+   
+}
+.main-product-page-admin > .createProductPage>.updateCard{
+    position:fixed;
+    top:25%;
+    left:15%;
+    height:30rem;
+    width:90rem;
+    border:1px solid black;
+    background-color: white;
+    display:flex;
+    gap:2rem;
+    padding:3rem;
+    
+}
+.main-product-page-admin > .createProductPage>.updateCard>div{
+    width:50%;
+    display:flex;
+    flex-direction: column;
+    gap:2rem;
+}
+
+    .main-product-page-admin > .createProductPage>.updateCard>div>div{
+        display:grid;
+        grid-template-columns: 30% 60%;
+        font-size: 1.4rem;;
+    }
+    .main-product-page-admin > .createProductPage>.updateCard>div>div>input {
+        border-bottom:1px solid gray;
+        font-size:1.4rem;
+        
+    }
+    .main-product-page-admin > .createProductPage>.updateCard>div>div>input::placeholder{
+        color:gray;
+    }
+.main-product-page-admin > .createProductPage>.updateCard>div>div>textarea{
+    border:1px solid gray;
+    resize:none;
+}
+    .main-product-page-admin > .createProductPage>.updateCard>svg{
+        position: absolute;
+        top:-1rem;
+        right:-3rem;
+        font-size:2.5rem;
+        cursor:pointer;
+        
+    }
+
+
+    .main-product-page-admin > .createProductPage>.updateCard>div>button{
+        border:1px solid green;
+        cursor:pointer;
+        width:40%;
+        color:green;
+        transition: all 0.4s;
+        align-self: center;
+        height:3rem;
+        font-size:1.3rem;
+        font-weight:650;
+
+    }
+    .main-product-page-admin > .createProductPage>.updateCard>div>button:hover{
+        color:white;
+        background-color: green;
     }

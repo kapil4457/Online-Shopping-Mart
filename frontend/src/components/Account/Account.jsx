@@ -31,7 +31,7 @@ const Account = () => {
         <>
           <div className="account-main">
             <div className="left-account-page">
-              <img src={profile} alt="" />
+              <img src={user?.avatar?.url} alt="" />
             </div>
             <div className="right-account-page">
               <div>

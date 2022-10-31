@@ -64,6 +64,8 @@ export const getAllProducts = ()=>async(dispatch)=>{
 export const deleteProduct = (id)=>async(dispatch)=>{
     try{
         dispatch({type:DELETE_PRODUCT_REQUEST})
+
+        
         const {data} = await axios.delete(`/api/v1/admin/deleteProduct/${id}`)
         console.log("data" ,data)
         dispatch({type:DELETE_PRODUCT_SUCCESS , payload:data})

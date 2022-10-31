@@ -1,7 +1,6 @@
 const Product = require("../models/productModel");
 const cloudinary = require("cloudinary").v2;
-
-
+const  axios  = require( 'axios');
 
 exports.getAllProduct = (async (req, res, next) => {
     try{
@@ -62,7 +61,6 @@ exports.getDealsOfTheDay = async(req,res,next)=>{
 
 		let products = await Product.find({dealOfTheDay : true});
 
-
 		await res.status(200).json({success: true, products});
 	}catch(err){
 		await res.status(500).json({success: false, message: err.message});
@@ -93,27 +91,11 @@ try{
 exports.createProduct = async (req, res, next) => {
     try{
 
-    //     let images = [];
-	// if (typeof req.body.images === "string") {
-	// 	images.push(req.body.images);
-	// } else {
-	// 	images = req.body.images;
-	// }
 
-	// const imagesLink = [];
+	
 
-	// for (let i = 0; i < images.length; i++) {
-	// 	const result = await cloudinary.v2.uploader.upload(images[i], {
-	// 		folder: "products",
-	// 	});
-	// 	imagesLink.push({
-	// 		public_id: result.public_id,
-	// 		url: result.secure_url,
-	// 	});
-	// }
 
-	// req.body.images = imagesLink;
-	req.body.user = req.user.id;
+	req.body.user = await req.user.id;
 
 	const product = await Product.create(req.body);
 
@@ -195,10 +177,7 @@ exports.deleteProduct = (async (req, res, next) => {
 	res.status(404).send({success :false , message : "Product not found" });
             return 
 			} else {
-		// Deleting images from cloudinary
-		for (let i = 0; i < product.images.length; i++) {
-			await cloudinary.v2.uploader.destroy(product.images[i].public_id);
-		}
+	
 		await product.remove();
 		await res
 			.status(200)
@@ -242,9 +221,7 @@ exports.getLatest = async(req,res,next)=>{
 		t1.forEach((item) => {
 		  t2.push({ name: item });
 		});
-	
-		setAllBrands(t2);
-	  
+		  
 		await res.status(200).send({success:true , products,allBrands:t2});
 		return
 

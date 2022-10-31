@@ -10,7 +10,6 @@ import {
   updateProduct,
 } from "../../redux/actions/productAction";
 import { NavLink } from "react-router-dom";
-import bag from "./bags.jpg";
 import { deleteProduct } from "../../redux/actions/productAction";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
@@ -105,21 +104,19 @@ const ProductPage = () => {
       category: newData.category,
       subCategory: newData.subCategory,
       Stock: newData.Stock,
-      dealOfTheDay: newData.dealOfTheDay,
+      dealOfTheDay: newData.dealOfTheDay === "true" ? true : false,
       images: links,
     };
 
-    while (!formData.images) {
-      console.log("uploading images...");
-    }
-    console.log("In the frontend", formData.images);
     setTimeout(() => {
       dispatch(createProduct({ data: formData }));
     }, 2000);
 
     setTimeout(() => {
       toast("Product Created Successfully");
-      window.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
     }, 9000);
     toast("Please wait...");
     setDisplay2("none");

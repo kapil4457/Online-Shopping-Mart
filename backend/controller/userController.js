@@ -18,17 +18,14 @@ exports.registerUser = (async (req, res, next) => {
             role = "admin";
         }
         
-        const { name, email, password } = req.body;
+        const { name, email, password ,avatar} = req.body;
         
         const user = await User.create({
             name,
             email,
             password,
             role,
-            avatar: {
-                public_id: "123456",
-                url: "123456",
-            },
+            avatar
         });
         
         sendToken(user, 201, res);

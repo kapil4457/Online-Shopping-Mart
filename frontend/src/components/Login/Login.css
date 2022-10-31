@@ -25,7 +25,9 @@
 .login-container>h3{
     margin-bottom:4rem;
 }
-
+.image{
+    font-weight:550;
+}
 .login-container , .login-container > div , .register-container , .register-container > div{
     width:27vw;
 }

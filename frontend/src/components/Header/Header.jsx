@@ -155,7 +155,7 @@ const Header = () => {
             >
               {user != null ? (
                 <img
-                  src={profile}
+                  src={user?.avatar?.url}
                   alt=""
                   style={{ border: "2px solid white" }}
                 />

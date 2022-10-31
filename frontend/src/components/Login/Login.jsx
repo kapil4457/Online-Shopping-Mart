@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loading from "../Loader/Loading";
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -15,6 +16,26 @@ const Login = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassworda] = useState("");
+  const [file, setFiles] = useState(null);
+
+  const handleFile = (e) => {
+    const files = Array.from(e.target.files);
+
+    setFiles([]);
+
+    files.forEach((file) => {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setFiles((old) => [...old, reader.result]);
+        }
+      };
+
+      reader.readAsDataURL(file);
+    });
+  };
+
   const moveLeft = () => {
     setTransformation(-32);
   };
@@ -38,16 +59,42 @@ const Login = () => {
   };
 
   const registerTrigger = async () => {
-    if (!name || !email || !password) {
+    if (!name || !email || !password || !file) {
       toast("Please enter all the fields");
+      return;
     }
 
-    const data = {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "wgk9k2lo");
+
+    const { data } = await axios.post(
+      "https://api.cloudinary.com/v1_1/ds82kuoet/image/upload",
+      formData
+    );
+    let thisData = {
+      public_id: data.public_id,
+      url: data.url,
+    };
+
+    const info = {
       name: name,
       email: email,
       password: password,
+      avatar: thisData,
     };
-    dispatch(register(data));
+
+    setTimeout(() => {
+      dispatch(register(info));
+    }, 2000);
+    setTimeout(() => {
+      toast("User Registered Successfully");
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
+    }, 9000);
+
+    toast("Please Wait...");
   };
 
   useEffect(() => {
@@ -138,6 +185,12 @@ const Login = () => {
                     setPassworda(e.target.value);
                   }}
                 />
+              </div>
+              <div className="image">
+                Profile Pic
+                <label onChange={handleFile}>
+                  <input type="file" multiple="multiple" />
+                </label>
               </div>
 
               <button className="submit" onClick={registerTrigger}>

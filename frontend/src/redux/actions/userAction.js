@@ -83,8 +83,11 @@ export const register = (userData) => async (dispatch) => {
 		await dispatch({ type: REGISTER_REQUEST });
 	
 		const config = { headers: { "Content-Type": "application/json" } };
-		const { data } = await axios.post(`/api/v1/register`, userData, config);
-		await dispatch({ type: REGISTER_SUCCESS ,payload : data.user});
+		setTimeout(async()=>{
+
+			const { data } = await axios.post(`/api/v1/register`, userData, config);
+			await dispatch({ type: REGISTER_SUCCESS ,payload : data.user});
+		},3000)
 	} catch (error) {
 		await dispatch({ type: REGISTER_FAIL, payload: error.response.data.message });
 	}

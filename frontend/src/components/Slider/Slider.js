@@ -28,17 +28,17 @@ const navigate = useNavigate();
 
     return (
         <div className="container-slider">
-            {dataSlider.map((obj, index) => {
+            {dataSlider?.map((obj, index) => {
                 return (
                     <div
                     key={index}
                     className={slideIndex === index + 1 ? "slide active-anim" : "slide"}
                     >
                         <img 
-                        src="black.jpg" 
+                        src={obj?.image[0]?.url}
                         style={{cursor:"pointer"}}
                         onClick={()=>{
-                            navigate(`/products/item/${obj._id}`)
+                            navigate(`/products/${obj?.brand}`)
                         }}
                         />
                     </div>

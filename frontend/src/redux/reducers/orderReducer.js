@@ -14,7 +14,10 @@ ORDER_CANCEL_REQUEST,
 ORDER_CANCEL_SUCCESS,
 GET_ALL_ORDERS_ADMIN_REQUEST,
 GET_ALL_ORDERS_ADMIN_SUCCESS,
-GET_ALL_ORDERS_ADMIN_FAIL
+GET_ALL_ORDERS_ADMIN_FAIL,
+UPDATE_ORDER_STATUS_SUCCESS,
+UPDATE_ORDER_STATUS_FAIL,
+UPDATE_ORDER_STATUS_REQUEST
     } from '../constants/orderConstant'
 
 
@@ -113,17 +116,20 @@ GET_ALL_ORDERS_ADMIN_FAIL
     export const cancelOrderReducer = (state = { order: {} }, action) => {
         switch (action.type) {
             case ORDER_CANCEL_REQUEST:
+                case UPDATE_ORDER_STATUS_REQUEST:
                 return {
                     loading: true,
                 };
     
             case ORDER_CANCEL_SUCCESS:
+                case UPDATE_ORDER_STATUS_SUCCESS:
                 return {
                     loading: false,
                     order: action.payload,
                 };
     
             case ORDER_CANCEL_FAIL:
+                case UPDATE_ORDER_STATUS_FAIL:
                 return {
                     loading: false,
                     error: action.payload,

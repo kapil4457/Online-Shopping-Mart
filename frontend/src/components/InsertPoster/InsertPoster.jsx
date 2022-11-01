@@ -1,15 +1,16 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../SideBar/Sidebar";
 import "./InsertPoster.css";
 import { useSelector, useDispatch } from "react-redux";
-import { createPoster } from "../../redux/actions/posterAction";
+import { clearErrors, createPoster } from "../../redux/actions/posterAction";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router";
 
 const InsertPoster = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { error } = useSelector((state) => state.createPoster);
   const [file, setFiles] = useState(null);
   const [brand, setBrand] = useState("");
   const handleFile = (e) => {
@@ -62,6 +63,11 @@ const InsertPoster = () => {
 
     toast("Please Wait...");
   };
+  useEffect(() => {
+    if (error) {
+      dispatch(clearErrors());
+    }
+  }, [error]);
   return (
     <div className="main-poster">
       <Sidebar />

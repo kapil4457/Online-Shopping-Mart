@@ -15,7 +15,10 @@ ORDER_CANCEL_REQUEST,
 ORDER_CANCEL_SUCCESS,
 GET_ALL_ORDERS_ADMIN_FAIL,
 GET_ALL_ORDERS_ADMIN_REQUEST,
-GET_ALL_ORDERS_ADMIN_SUCCESS
+GET_ALL_ORDERS_ADMIN_SUCCESS,
+UPDATE_ORDER_STATUS_FAIL,
+UPDATE_ORDER_STATUS_REQUEST,
+UPDATE_ORDER_STATUS_SUCCESS
 } from '../constants/orderConstant'
 
 
@@ -136,6 +139,22 @@ export const getAllOrder = () => async (dispatch)=>{
 	}catch(error){
 		dispatch({type:GET_ALL_ORDERS_ADMIN_FAIL ,payload:error}) ;
 	}
+	
+	
+}
 
+export const updateOrderStatus = (newStatusInfo)=>async(dispatch)=>{
+	try{
+		await dispatch({type:UPDATE_ORDER_STATUS_REQUEST})
+		const config = {headers: {'Content-Type': 'application/json	'}};
+		setTimeout(async()=>{
 
+			const {data} = await axios.put(`/api/v1/admin/order/${newStatusInfo?.id}` , newStatusInfo , config)
+			await dispatch({type:UPDATE_ORDER_STATUS_SUCCESS , payload : data});
+		},3000)
+			
+	}catch(error){
+		
+		await dispatch({type:UPDATE_ORDER_STATUS_FAIL ,payload:error.response.data.message}) ;
+	}
 }

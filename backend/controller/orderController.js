@@ -28,12 +28,12 @@ exports.newOrder = (async (req, res, next) => {
 			user: req.user.id,
 		});
 		
-		res.status(201).json({
+		await res.status(201).json({
 			success: true,
 			order,
 		});
 	}catch(err){
-		res.status(500).send({ success:false , message : err.message });
+		await res.status(500).send({ success:false , message : err.message });
 	}
 	});
 	
@@ -50,7 +50,7 @@ exports.getSingleOrder = (async (req, res, next) => {
 		
 		if(order)
 		
-		res.status(200).json({
+		await res.status(200).json({
 			success: true,
 			order,
 		});
@@ -67,12 +67,12 @@ exports.myOrders = (async (req, res, next) => {
 
 		const orders = await Order.find({ user: req.user._id });
 		
-	res.status(200).json({
+	await res.status(200).json({
 		success: true,
 		orders,
 	});
 }catch(err){
-	res.status(500).send({success: false, message: err.message });
+	await res.status(500).send({success: false, message: err.message });
 }
 });
 
@@ -87,13 +87,13 @@ try{
 		totalAmount += order.totalPrice;
 	});
 
-	res.status(200).json({
+	await res.status(200).json({
 		success: true,
 		totalAmount,
 		orders,
 	});
 }catch(err){
-	res.status(500).send({success: false, message: err.message });
+	await res.status(500).send({success: false, message: err.message });
 }
 });
 
@@ -101,21 +101,20 @@ try{
 exports.updateOrder = (async (req, res, next) => {
 	try{
 
-		console.log(req.params.id);
-		const order = await Order.findById(req.params.id);
+		const order = await Order.findById(req.body.id);
 		
 		if (!order) {
-			res.status(404).send({success: false, message:"Order not found  with this id"});
+			await res.status(404).send({success: false, message:"Order not found  with this id"});
 			return 
 		}
-		if (order.orderStatus === "Delivered") {
-			res.status(400).send({success: false, message:"You have already delivered this order"});
+		if (order.orderStatus === req.body.status === "Delivered") {
+			await res.status(400).send({success: false, message:"You have already delivered this order"});
 			return 
 		}
 		
-		if (req.body.status === "Shipped") {
-			order.orderItems.forEach(async (order) => {
-				console.log(order.product);
+		if (req.body.status === "Delivered") {
+			 order.orderItems.forEach(async (order) => {
+				console.log(order);
 				await updateStock(order.product, order.quantity);
 			});
 		}
@@ -127,13 +126,13 @@ exports.updateOrder = (async (req, res, next) => {
 	}
 	
 	await order.save({ validateBeforeSave: false });
-	res.status(200).json({
+	res.status(200).send({
 		success: true,
 		order,
 		quantity: quantity,
 	});
 }catch(err){
-	res.status(500).json({ success: true, message: err.message });
+	res.status(500).send({ success: true, message: err.message });
 }
 });
 
@@ -151,7 +150,7 @@ exports.deleteOrder = (async (req, res, next) => {
 		const order = await Order.findById(req.params.id);
 		
 		if (!order) {
-			res.status(404	).send({success :false , message : "Order not found with this Id" })
+			await res.status(404).send({success :false , message : "Order not found with this Id" })
 			return
 			}
 		
@@ -161,7 +160,7 @@ exports.deleteOrder = (async (req, res, next) => {
 			success: true,
 		});
 	}catch(err){
-		res.status(500).json({ success:false , message : err.message })
+		await res.status(500).json({ success:false , message : err.message })
 	}
 });
 
@@ -171,8 +170,8 @@ exports.cancelOrder = async(req,res)=>{
 		const order = await Order.findById(req.body.id);
 		order.orderStatus  = 'Cancelled';
 		await order.save({validateBeforeSave : false});
-		res.status(200).send({success : true , message : "Order Cancelled Successfully"})
+		await res.status(200).send({success : true , message : "Order Cancelled Successfully"})
 	}catch(err){
-		res.status(500).json({ success : false , message : err.message	 })
+		await res.status(500).json({ success : false , message : err.message	 })
 	}
 }

@@ -1,5 +1,5 @@
 const express = require("express");
-const { createPoster } = require("../controller/posterController");
+const { createPoster, getLatestPoster } = require("../controller/posterController");
 const { isAuthenticatedUser, authorizeRole } = require("../middleware/auth");
 
 
@@ -11,3 +11,5 @@ module.exports = router;
 
 
 router.route("/poster/create").post(isAuthenticatedUser , authorizeRole("admin") , createPoster);
+
+router.route("/admin/latest/poster").get(isAuthenticatedUser , authorizeRole("admin") , getLatestPoster);

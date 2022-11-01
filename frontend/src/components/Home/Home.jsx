@@ -6,16 +6,17 @@ import SliderMain from "../Slider/Slider";
 import { NavLink } from "react-router-dom";
 import Slider from "./Slider";
 import Loading from "../Loader/Loading";
+import { useSelector } from "react-redux";
 const Home = () => {
   const [AllProducts, setAllProducts] = useState([]);
   const [BlockBuster, setBlockBuster] = useState([]);
   const [kitchen, setKitchen] = useState([]);
   const [loaded, setloaded] = useState("false");
+  const { poster } = useSelector((state) => state.getPoster);
 
   const getDealsofTheday = async () => {
     const temp = await axios.get("/api/v1/products/dealOfTheDay");
     setBlockBuster(temp.data.products);
-    console.log(BlockBuster);
   };
   const fetchAllProducts = async () => {
     const Allproducts = await axios.get("/api/v1/products");
@@ -40,7 +41,7 @@ const Home = () => {
         <Loading />
       ) : (
         <div className="main-home">
-          <SliderMain dataSlider={AllProducts} />
+          <SliderMain dataSlider={poster?.poster} />
           <div className="main-body-home">
             <div className="latest-appliances">
               <h2 className="heading">

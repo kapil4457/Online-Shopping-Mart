@@ -7,7 +7,7 @@ exports.createPoster = async (req, res, next) => {
 
 	const poster = await Poster.create(req.body);
 
-	res.status(201).json({
+	await res.status(201).json({
 		success: true,
 		poster,
 	});
@@ -15,4 +15,14 @@ exports.createPoster = async (req, res, next) => {
     }catch(err){
 		await res.status(500).json({success: false, message: err.message});
     }
+}
+
+
+exports.getLatestPoster = async (req, res, next) => {
+	try{
+		const poster = await Poster.find().limit(5);
+		await res.status(200).json({success:true , poster});
+	}catch(error){
+		await res.status(500).json({success:fail , message: error.message});
+	}
 }

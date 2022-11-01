@@ -26,8 +26,9 @@ try{
 		let category =  product.category.toLowerCase();
 	let subCategory =  product.subCategory.toLowerCase();
 	let description =  product.description.toLowerCase();
+	let brand = product.brand.toLowerCase();
 	let nameOfProduct =  product.name.toLowerCase();
-   if(  category.includes(`${name}`) ||  subCategory.includes(`${name}`) || description.includes(`${name}`) || nameOfProduct.includes(`${name}`) ||    name.includes(`${category}`) ||  name.includes(`${subCategory}`) || name.includes(`${description}`) || name.includes(`${nameOfProduct}`) ){
+   if(  category.includes(`${name}`) ||  subCategory.includes(`${name}`) || description.includes(`${name}`) || nameOfProduct.includes(`${name}`) ||    name.includes(`${category}`) ||  name.includes(`${subCategory}`) || name.includes(`${description}`) || name.includes(`${nameOfProduct}`  || brand.includes(`${name}`) || name.includes(`${brand}`)) ){
 	   products.push(product);
    }
 	})

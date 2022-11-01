@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllOrder } from "../../redux/actions/orderAction";
 import Loading from "../Loader/Loading";
 import { getAllProducts } from "../../redux/actions/productAction";
-import { getAllUser } from "../../redux/actions/userAction";
+import { getAllUser, loadUser } from "../../redux/actions/userAction";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,8 @@ const Dashboard = () => {
     dispatch(getAllOrder());
     dispatch(getAllProducts());
     dispatch(getAllUser());
-  }, []);
+    dispatch(loadUser());
+  }, [dispatch]);
   return (
     <>
       {order?.loading === true || loading === true ? (

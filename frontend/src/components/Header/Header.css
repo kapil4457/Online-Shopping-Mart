@@ -267,7 +267,7 @@ object-fit: cover;
 
 
 
-@media (max-width:800px){
+@media (max-width:1300px){
     .main-header{
      height:20rem;   
     }
@@ -309,7 +309,15 @@ margin-left:1rem;
     display:none;
     
 }
-.side-header{
-    width:80%;
+.side-header {
+    width: 38%;
 }
+}
+
+@media (max-width:900px){
+    
+        
+        .side-header {
+            width: 78%;
+        }
 }

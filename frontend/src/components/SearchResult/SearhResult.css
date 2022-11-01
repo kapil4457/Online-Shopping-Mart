@@ -125,3 +125,45 @@ color:white;
     color:rgba(0,0,0,0.8);
     font-weight:550;
 }
+
+@media all and (min-width:1300px )and (max-width:1400px){
+    .filters > .price-range>.price-meter{
+        flex-direction: column;
+    }
+}
+@media all and (max-width:1300px){
+    .main-search-page{
+        display:flex;
+        flex-direction: column;
+        gap:9rem;
+    }
+
+    .main-search-page > .filters {
+        height:25vh;
+    }
+    .searchResultCard{
+        grid-template-columns: 1fr 1fr;
+    }
+    .main-search-card{
+width:100%;
+    }
+}
+
+@media all and (max-width:900px){
+    .main-search-page{
+        display:flex;
+        flex-direction: column;
+        gap:4rem;
+    }
+
+    .main-search-page > .filters {
+        height:34vh;
+    }
+    .searchResultCard{
+        grid-template-columns: 1fr;
+    }
+    .main-search-card{
+width:100%;
+    }
+}
+

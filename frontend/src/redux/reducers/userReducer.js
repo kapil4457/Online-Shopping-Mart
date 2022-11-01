@@ -19,8 +19,9 @@ import {LOGIN_FAIL,
 	UPDATE_PASSWORD_REQUEST,
 	GET_ALL_USER_SUCCESS,
 	GET_ALL_USER_FAIL,
-	GET_ALL_USER_REQUEST
-} from '../constants/userConstants'
+	GET_ALL_USER_REQUEST,
+	UPDATE_USER_ROLE_FAIL,
+	UPDATE_USER_ROLE_REQUEST,UPDATE_USER_ROLE_SUCCESS} from '../constants/userConstants'
 
 
 export const userReducer = (state = { user: {} }, action) => {
@@ -146,3 +147,32 @@ export const profileReducer = (state = {}, action) => {
 			return state;
 	}
 };
+
+
+export const updateUserRole = (state={},action)=>{
+	switch(action.type){
+		case UPDATE_USER_ROLE_REQUEST :
+			return{
+				...state,
+				loading:true
+			}
+		
+			case UPDATE_USER_ROLE_SUCCESS :
+				return {
+					loading:false,
+					status : action.payload
+				}
+			case UPDATE_USER_ROLE_FAIL :
+				return{
+					loading:false,
+					error: action.payload,
+				}
+			case CLEAR_ERRORS :
+				return{
+					loading:false,
+					error:null,
+				}
+			default :
+			return state
+	}	
+}

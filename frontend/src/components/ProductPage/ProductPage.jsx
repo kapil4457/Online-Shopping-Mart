@@ -4,20 +4,24 @@ import Sidebar from "../SideBar/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../Loader/Loading";
 import CloseIcon from "@mui/icons-material/Close";
+
 import {
+  clearErrors,
   createProduct,
   getAllProducts,
   updateProduct,
 } from "../../redux/actions/productAction";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { deleteProduct } from "../../redux/actions/productAction";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 const ProductPage = () => {
+  const navigate = useNavigate();
   const { loading, products } = useSelector((state) => state.getAllProducts);
   const updatedData = useSelector((state) => state.updateProduct);
   const [display, setDisplay] = useState("none");
   const [display2, setDisplay2] = useState("none");
+  const { user } = useSelector((state) => state.user);
 
   const [files, setFiles] = useState(null);
 
@@ -115,12 +119,19 @@ const ProductPage = () => {
     setTimeout(() => {
       toast("Product Created Successfully");
       setTimeout(() => {
-        window.location.reload();
+        navigate("/admin/dashboard");
       }, 3000);
     }, 9000);
     toast("Please wait...");
     setDisplay2("none");
   };
+
+  useEffect(() => {
+    if (user?.role === "user") {
+      navigate("/");
+      toast("You are not allowed to access this page !!");
+    }
+  }, [user]);
   return (
     <>
       {loading === true ? (
@@ -304,7 +315,7 @@ const ProductPage = () => {
                         className="delete"
                         onClick={() => {
                           dispatch(deleteProduct(item._id));
-                          window.location.reload();
+                          navigate("/admin/dashboard");
                         }}
                       >
                         Delete

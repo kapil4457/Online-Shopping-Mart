@@ -15,7 +15,7 @@ export const createPoster=(info)=>async(dispatch)=>{
         
     }catch(error){
         
-        dispatch({type:CREATE_POSTER_FAIL , payload : error});
+        dispatch({type:CREATE_POSTER_FAIL , payload : error.response.data.message});
     }
 }
 
@@ -28,7 +28,7 @@ export const getLatestPoster = ()=> async (dispatch) => {
             await dispatch({type:GET_POSTER_SUCCESS , payload : data});
 
     }catch(error){
-       await  dispatch({type:GET_POSTER_FAIL ,payload:error})
+       await  dispatch({type:GET_POSTER_FAIL ,payload:error.response.data.message})
     }
 }
 

@@ -30,7 +30,7 @@ exports.registerUser = (async (req, res, next) => {
         
         sendToken(user, 201, res);
     }catch(err) {
-        res.send({success:false  , message : err.stack});
+       await  res.send({success:false  , message : err.stack});
     }
     });
 
@@ -75,14 +75,14 @@ exports.loginUser = (async (req, res, next) => {
 exports.logout = (async (req, res, next) => {
     try{
 
-        res.cookie("token", null, {
+      await   res.cookie("token", null, {
             expires: new Date(Date.now()),
             httpOnly: true,
         });
         
-        res.status(200).json({ success: true, message: "logged out successfully" });
+      await   res.status(200).json({ success: true, message: "logged out successfully" });
     }catch(err){
-        res.send({success  :false , message : err.message});
+      await   res.send({success  :false , message : err.message});
         
     }
     });
@@ -95,18 +95,18 @@ exports.getUserDetails = (async (req, res, next) => {
     try{
         const cookie = req.headers.cookie;
         if(!cookie){
-            res.status(404).send({success:false , message : "You have already Logged in !"})
+           await  res.status(404).send({success:false , message : "You have already Logged in !"})
             return;
         }
 
         const user = await User.findById(req.user.id);
         
-        res.status(200).json({
+      await   res.status(200).json({
             success: true,
             user,
         });
     }catch(err){
-        res.status(400).send({success:false  , message : err.message})
+      await  res.status(400).send({success:false  , message : err.message})
     }
 });
 
@@ -120,12 +120,12 @@ exports.updatePassword = (async (req, res, next) => {
         const isMatch = await user.comparePassword(req.body.oldPassword);
         
         if (!isMatch) {
-            res.status(400).send({success :false , message :"Old Password is incorrect"});
+           await  res.status(400).send({success :false , message :"Old Password is incorrect"});
             return 
         }
         
         if (req.body.newPassword !== req.body.confirmPassword) {
-            res.status(400).send({success :false , message :" New Password and Confirm Password does not match"});
+           await res.status(400).send({success :false , message :" New Password and Confirm Password does not match"});
             return         }
         
         user.password = req.body.newPassword;
@@ -134,7 +134,7 @@ exports.updatePassword = (async (req, res, next) => {
         
         sendToken(user, 200, res);
     }catch(err){
-        res.send({success :false , message :err.message});
+       await res.send({success :false , message :err.message});
         
     }
 });
@@ -149,35 +149,16 @@ exports.updateProfile = (async (req, res, next) => {
             email: req.body.email,
 	};
     
-	//Cloudinary
-	// if (req.body.avatar !== "") {
-        // 	const user = await User.findById(req.user.id);
-        
-        // 	const imageId = user.avatar.public_id;
-        
-        // 	await cloudinary.v2.uploader.destroy(imageId);
-        
-        // 	const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-            // 		folder: "avatars",
-            // 		width: 150,
-            // 		crop: "scale",
-            // 	});
-            
-            // 	newUserData.avatar = {
-                // 		public_id: myCloud.public_id,
-                // 		url: myCloud.secure_url,
-                // 	};
-                // }
-                
+
                 const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
                     new: true,
                     runValidators: true,
                     useFindAndModify: true,
                 });
                 
-                res.status(200).json({ success: true , user : user});
+              await  res.status(200).json({ success: true , user : user});
             }catch(err){
-                res.status(400).send({success : false , message : err.message})
+              await   res.status(400).send({success : false , message : err.message})
             }
 });
 
@@ -187,8 +168,49 @@ exports.getAllUsers = async(req,res,next)=>{
     try{
         const users = await User.find();
         const userCount =await  users.length;
-        res.status(200).send({success:true , users,userCount})
+      await   res.status(200).send({success:true , users,userCount})
     }catch(error){
-        res.status(400).send({success : false , message : err.message})
+      await  res.status(400).send({success : false , message : err.message})
+    }
+}
+
+exports.deleteUser = async(req,res,next)=>{
+    try{
+      
+        const user = await User.find({_id : req.params.id});
+        if(!user){
+            res.status(404).send({success:false , error:"User not found"});
+            return;
+        }
+        await User.findByIdAndDelete( req.params.id);
+
+        res.status(200).send({success:true , message : "User deleted Successfully"})
+
+
+
+        
+
+    }catch(error){
+        await res.status(400).send({success : false , message : err.message});
+    }
+}
+
+
+exports.changeUserRole = async(req,res,next)=>{
+    try{
+        const user = await User.findById(req.body.id);
+
+        if(!user){
+           await res.status(500).send({success:false , message : "User not found."});
+
+            return;
+        }
+
+         user.role = req.body.role;
+        await user.save();
+    await res.status(200).send({success:true , message : "User Role Updated successfully !!"})
+
+    }catch(error){
+        await res.status(400).send({success : false , message : err.message});
     }
 }

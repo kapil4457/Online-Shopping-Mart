@@ -11,7 +11,7 @@ import Login from './components/Login/Login';
 import Account from './components/Account/Account';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadUser } from './redux/actions/userAction';
+import { getAllUser, loadUser } from './redux/actions/userAction';
 import UpdatePassword from './components/updatePassword/UpdatePassword';
 import MyOrders from './components/myOrders/MyOrders';
 import ShippingInfo from './components/ShippingInfo/ShippingInfo';
@@ -23,6 +23,7 @@ import ProductPage from './components/ProductPage/ProductPage';
 import InsertPoster from './components/InsertPoster/InsertPoster';
 import Orders from './components/Orders/Orders'
 import { getLatestPoster } from './redux/actions/posterAction';
+import GetAllUser from './components/getAllUser/GetAllUser';
 
 // kapilsoni54768161@gmail.com
 
@@ -60,6 +61,7 @@ import { getLatestPoster } from './redux/actions/posterAction';
     <Route path='/admin/products' element={<ProductPage />}  />
     <Route path='/admin/poster' element={<InsertPoster />}  />
     <Route path='/admin/orders' element={<Orders />}  />
+    <Route path='/admin/users' element={<GetAllUser />}  />
 
     
     </Routes>

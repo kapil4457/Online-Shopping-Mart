@@ -44,7 +44,7 @@ exports.getSingleOrder = (async (req, res, next) => {
 		const order = await Order.findById(req.params.id);
 		
 		if (!order) {
-			res.status(404).send({success: false, message: 'Order not found with this id'});
+			await res.status(404).send({success: false, message: 'Order not found with this id'});
 		}
 		
 		
@@ -55,7 +55,7 @@ exports.getSingleOrder = (async (req, res, next) => {
 			order,
 		});
 	}catch(err){
-		res.status(500).send({success: false, message: err.message});
+		await res.status(500).send({success: false, message: err.message});
 	}
 	});
 
@@ -126,13 +126,13 @@ exports.updateOrder = (async (req, res, next) => {
 	}
 	
 	await order.save({ validateBeforeSave: false });
-	res.status(200).send({
+	await res.status(200).send({
 		success: true,
 		order,
 		quantity: quantity,
 	});
 }catch(err){
-	res.status(500).send({ success: true, message: err.message });
+	await res.status(500).send({ success: true, message: err.message });
 }
 });
 
@@ -156,7 +156,7 @@ exports.deleteOrder = (async (req, res, next) => {
 		
 		await order.remove();
 		
-		res.status(200).json({
+		await res.status(200).json({
 			success: true,
 		});
 	}catch(err){

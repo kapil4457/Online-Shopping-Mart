@@ -11,6 +11,7 @@ const InsertPoster = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { error } = useSelector((state) => state.createPoster);
+  const { user } = useSelector((state) => state.user);
   const [file, setFiles] = useState(null);
   const [brand, setBrand] = useState("");
   const handleFile = (e) => {
@@ -67,7 +68,12 @@ const InsertPoster = () => {
     if (error) {
       dispatch(clearErrors());
     }
-  }, [error]);
+
+    if (user?.role === "user") {
+      navigate("/");
+      toast("You are not allowed to access this page !!");
+    }
+  }, [error, user]);
   return (
     <div className="main-poster">
       <Sidebar />

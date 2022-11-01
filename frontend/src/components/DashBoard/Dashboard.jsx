@@ -6,19 +6,21 @@ import { getAllOrder } from "../../redux/actions/orderAction";
 import Loading from "../Loader/Loading";
 import { getAllProducts } from "../../redux/actions/productAction";
 import { getAllUser, loadUser } from "../../redux/actions/userAction";
-
+import { useNavigate } from "react-router";
+import { toast, ToastContainer } from "react-toastify";
 const Dashboard = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { order } = useSelector((state) => state.getAllOrdersAdmin);
   const { products, loading } = useSelector((state) => state.getAllProducts);
-  const { users } = useSelector((state) => state.user);
+  const { users, user } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(getAllOrder());
     dispatch(getAllProducts());
     dispatch(getAllUser());
     dispatch(loadUser());
-  }, [dispatch]);
+  }, []);
   return (
     <>
       {order?.loading === true || loading === true ? (
@@ -45,6 +47,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
+          <ToastContainer />
         </div>
       )}
     </>

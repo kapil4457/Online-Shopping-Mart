@@ -137,7 +137,7 @@ export const getAllOrder = () => async (dispatch)=>{
 		const {data} = await axios.get('/api/v1/admin/orders');
 		dispatch({type:GET_ALL_ORDERS_ADMIN_SUCCESS ,payload:data})
 	}catch(error){
-		dispatch({type:GET_ALL_ORDERS_ADMIN_FAIL ,payload:error}) ;
+		dispatch({type:GET_ALL_ORDERS_ADMIN_FAIL ,payload:error.response.data.message}) ;
 	}
 	
 	

@@ -20,7 +20,9 @@ UPDATE_PASSWORD_SUCCESS,
 UPDATE_PASSWORD_REQUEST,
 GET_ALL_USER_FAIL,
 GET_ALL_USER_REQUEST,
-GET_ALL_USER_SUCCESS
+GET_ALL_USER_SUCCESS,
+UPDATE_USER_ROLE_FAIL,
+UPDATE_USER_ROLE_REQUEST,UPDATE_USER_ROLE_SUCCESS
 }from '../constants/userConstants'
 
 
@@ -129,6 +131,21 @@ export const getAllUser = ()=>async(dispatch)=>{
 		const {data} = await axios.get('/api/v1/admin/users');
 		await dispatch({type:GET_ALL_USER_SUCCESS , payload : data})
 	}catch(error){
-			await dispatch({ type: GET_ALL_USER_FAIL, payload: error});
+			await dispatch({ type: GET_ALL_USER_FAIL, payload: error.response.data.message});
 	}
 };
+
+export const updateUserRole = (info) =>async(dispatch)=>{
+	try{
+		await dispatch({type:UPDATE_USER_ROLE_REQUEST});
+
+		const config = {headers: {'Content-Type': 'application/json	'}};
+
+		const {data} = axios.put("/api/v1/admin/update/role" , info ,config)
+		dispatch({type:UPDATE_USER_ROLE_SUCCESS , payload : data});
+
+	}catch(error){
+		await dispatch({ type: UPDATE_USER_ROLE_FAIL, payload: error.response.data.message });
+	
+	}
+}

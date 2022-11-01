@@ -51,7 +51,7 @@ try{
 
 
 }catch(err){
-	res.status(404).send({ success: false, message : err.message })
+	await res.status(404).send({ success: false, message : err.message })
 }
 }
 
@@ -100,7 +100,7 @@ exports.createProduct = async (req, res, next) => {
 
 	const product = await Product.create(req.body);
 
-	res.status(201).json({
+	await res.status(201).json({
 		success: true,
 		product,
 	});
@@ -175,7 +175,7 @@ exports.deleteProduct = (async (req, res, next) => {
 	const product = await Product.findById(req.params.id);
 	if (!product) {
 
-	res.status(404).send({success :false , message : "Product not found" });
+	await res.status(404).send({success :false , message : "Product not found" });
             return 
 			} else {
 	
@@ -227,6 +227,6 @@ exports.getLatest = async(req,res,next)=>{
 		return
 
 	}catch(err){
-		res.status(500).json({success:false , message : err.message}); 
+		await res.status(500).json({success:false , message : err.message}); 
 	}
 }

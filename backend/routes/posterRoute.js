@@ -12,4 +12,4 @@ module.exports = router;
 
 router.route("/poster/create").post(isAuthenticatedUser , authorizeRole("admin") , createPoster);
 
-router.route("/admin/latest/poster").get(isAuthenticatedUser , authorizeRole("admin") , getLatestPoster);
+router.route("/admin/latest/poster").get(isAuthenticatedUser  , getLatestPoster);

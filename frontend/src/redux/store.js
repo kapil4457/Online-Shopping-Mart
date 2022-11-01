@@ -3,7 +3,7 @@ import { deleteProduct } from './actions/productAction'
 import { createOrderReducer, getAllOrdersAdmin, myOrdersReducer } from './reducers/orderReducer'
 import { createPoster, getPoster } from './reducers/posterReducer'
 import { createProduct, getAllPoducts, searchItem, updateProduct } from './reducers/productReducer'
-import { profileReducer, userReducer } from './reducers/userReducer'
+import { profileReducer, updateUserRole, userReducer } from './reducers/userReducer'
 
 
 
@@ -23,7 +23,8 @@ export default configureStore({
         updateProduct : updateProduct,
         createProduct : createProduct,
         createPoster : createPoster,
-        getPoster : getPoster
+        getPoster : getPoster,
+        updateUserRole : updateUserRole
     }    ,
     middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

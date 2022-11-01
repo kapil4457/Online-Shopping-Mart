@@ -55,7 +55,7 @@ export const getAllProducts = ()=>async(dispatch)=>{
 
         }catch(error)
         {
-            dispatch({type:GET_PRODUCTS_FAIL , error : error.message})
+            dispatch({type:GET_PRODUCTS_FAIL , payload : error.response.data.message})
         }
         
 }
@@ -71,7 +71,7 @@ export const deleteProduct = (id)=>async(dispatch)=>{
         dispatch({type:DELETE_PRODUCT_SUCCESS , payload:data})
 
     }catch(error){
-        dispatch({type:DELETE_PRODUCT_FAIL , error:error.message})
+        dispatch({type:DELETE_PRODUCT_FAIL , payload:error.response.data.message})
     }
 }
 
@@ -83,7 +83,7 @@ export const updateProduct=(data)=>async(dispatch)=>{
         const res = await axios.put(`/api/v1/admin/updateProduct/${data._id}` , data,config);
         dispatch({type:PRODUCT_UPDATE_SUCCESS , payload:res});
     }catch(error){
-        dispatch({type:PRODUCT_UPDATE_FAIL , error : error.message})
+        dispatch({type:PRODUCT_UPDATE_FAIL , payload : error.response.data.message})
     }
 }
 
@@ -99,7 +99,7 @@ export const createProduct = ({data})=>async(dispatch)=>{
             dispatch({type:CREATE_ORDER_SUCCESS , payload:res})
         },2000)
     }catch(error){
-        dispatch({type:CREATE_PRODUCT_FAIL , error:error.message})
+        dispatch({type:CREATE_PRODUCT_FAIL , payload:error.response.data.message})
         
     }
 }

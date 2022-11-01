@@ -20,6 +20,7 @@ import OrderSuccess from './components/OrderSuccess/OrderSuccess';
 import UserOptions from './components/UserOptions/UserOptions';
 import Dashboard from './components/DashBoard/Dashboard';
 import ProductPage from './components/ProductPage/ProductPage';
+import InsertPoster from './components/InsertPoster/InsertPoster';
 
 // kapilsoni54768161@gmail.com
 
@@ -53,6 +54,8 @@ import ProductPage from './components/ProductPage/ProductPage';
     <Route path='/order/placed' element={<OrderSuccess />}  />
     <Route path='/admin/dashboard' element={<Dashboard />}  />
     <Route path='/admin/products' element={<ProductPage />}  />
+    <Route path='/admin/poster' element={<InsertPoster />}  />
+
     
     </Routes>
    

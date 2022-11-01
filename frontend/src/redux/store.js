@@ -1,6 +1,7 @@
 import {  configureStore} from '@reduxjs/toolkit'
 import { deleteProduct } from './actions/productAction'
 import { createOrderReducer, getAllOrdersAdmin, myOrdersReducer } from './reducers/orderReducer'
+import { createPoster } from './reducers/posterReducer'
 import { createProduct, getAllPoducts, searchItem, updateProduct } from './reducers/productReducer'
 import { profileReducer, userReducer } from './reducers/userReducer'
 
@@ -20,7 +21,8 @@ export default configureStore({
         getAllProducts  : getAllPoducts,
         deleteProduct : deleteProduct,
         updateProduct : updateProduct,
-        createOrder : createProduct
+        createProduct : createProduct,
+        createPoster : createPoster
     }    ,
     middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

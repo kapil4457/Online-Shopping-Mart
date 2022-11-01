@@ -1,0 +1,72 @@
+.main-poster{
+ min-height:48rem;   
+ display: flex;
+}
+
+
+.main-poster > .poster-main{
+    display:grid;
+    width:100rem;
+    place-items: center;
+}
+
+.main-poster > .poster-main > .poster-main-card{
+    height:23rem;
+    width:30rem;
+    display: flex;
+    flex-direction: column;
+    padding-top:2rem;
+    gap:3rem;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+    
+}
+.main-poster > .poster-main > .poster-main-card>h2{
+    align-self: center;
+    font-size:2.3rem;
+    font-weight:550;
+    padding-left:4rem;
+
+}
+
+.main-poster > .poster-main > .poster-main-card>div{
+    display:flex;
+    gap:2rem;
+    flex-direction: column;
+    padding-left:4rem;
+
+}
+.main-poster > .poster-main > .poster-main-card>div>div{
+    display:grid;
+    grid-template-columns: 30% 70%;
+    gap:1rem;
+}
+.main-poster > .poster-main > .poster-main-card>div>div>p ,
+.main-poster > .poster-main > .poster-main-card>div>div>label {
+font-weight:550;
+font-size:1.3rem;
+}
+.main-poster > .poster-main > .poster-main-card>button{
+    height:2.5rem;
+    font-size: 1.2rem;
+    transition: all 0.4s;
+    cursor:pointer;
+    border:1px solid green;
+    width:15rem;
+    align-self: center;
+    color:green;
+    font-weight: 550;
+}
+.main-poster > .poster-main > .poster-main-card>button:hover{
+    background-color: green;
+    color:white;
+}
+
+
+
+.main-poster > .poster-main > .poster-main-card>div>div:nth-child(1)>input{
+    border-bottom: 1px solid gray;;
+}
+.main-poster > .poster-main > .poster-main-card>div>div>input{
+    width:80%;
+    font-size: 1.2rem;;
+}

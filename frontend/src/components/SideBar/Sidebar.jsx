@@ -5,6 +5,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PaidIcon from "@mui/icons-material/Paid";
 import Inventory2Icon from "@mui/icons-material/Inventory2";
+import WallpaperIcon from "@mui/icons-material/Wallpaper";
 const Dashboard = () => {
   return (
     <div className="sidebar">
@@ -23,6 +24,10 @@ const Dashboard = () => {
       <NavLink to="/admin/users">
         <PeopleIcon />
         <span>Users</span>
+      </NavLink>
+      <NavLink to="/admin/poster">
+        <WallpaperIcon />
+        <span>Add Poster</span>
       </NavLink>
     </div>
   );

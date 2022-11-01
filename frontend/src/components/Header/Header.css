@@ -22,6 +22,8 @@
 }
 
 
+
+
 .logout-icon{
     color:white;
     cursor:pointer;
@@ -265,3 +267,49 @@ object-fit: cover;
 
 
 
+@media (max-width:800px){
+    .main-header{
+     height:20rem;   
+    }
+    .main-header > .first-part
+    {
+        
+        flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
+gap:1rem;
+}
+.main-header > .first-part >.left{
+    margin-left:2rem;
+}
+.main-header > .first-part>.right{
+    flex-direction: column;
+    margin-right:0;
+    width:100%;
+    
+
+}
+.main-header > .first-part>.right>.main-bar{
+    align-self: center;
+    width:80%;
+}
+.main-header > .first-part>.right>.main-bar> .search-bar>input{
+    width:90%;
+    align-self:center;
+    
+}
+.right >.main-bar> .search-bar
+{
+margin-left:1rem;
+}
+.main-header > .first-part>.right>a , .main-header > .first-part>.right>svg{
+    display:none;
+}
+.main-header > .second-part>.other-options{
+    display:none;
+    
+}
+.side-header{
+    width:80%;
+}
+}

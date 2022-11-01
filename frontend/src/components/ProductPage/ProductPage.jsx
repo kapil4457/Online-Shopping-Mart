@@ -313,6 +313,7 @@ const ProductPage = () => {
                     <div className="buttons">
                       <button
                         className="delete"
+                        disabled={user?.role === "admin" ? false : true}
                         onClick={() => {
                           dispatch(deleteProduct(item._id));
                           navigate("/admin/dashboard");
@@ -326,6 +327,7 @@ const ProductPage = () => {
                           setDisplay("flex");
                           setData(item);
                         }}
+                        disabled={user?.role === "admin" ? false : true}
                       >
                         Update
                       </button>

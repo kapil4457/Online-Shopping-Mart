@@ -58,8 +58,18 @@ const UserCard = ({ data }) => {
         </div>
       </div>
       <div className="user-card-buttons">
-        <button onClick={deleteUser}>Delete</button>
-        <select name="" id="" onChange={updateUserRoleFunc}>
+        <button
+          onClick={deleteUser}
+          disabled={data?.role === "admin" ? false : true}
+        >
+          Delete
+        </button>
+        <select
+          name=""
+          id=""
+          onChange={updateUserRoleFunc}
+          disabled={data?.role === "admin" ? false : true}
+        >
           <option hidden>Update User Role</option>
           <option value="admin">admin</option>
           <option value="user">user</option>

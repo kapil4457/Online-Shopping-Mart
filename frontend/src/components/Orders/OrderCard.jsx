@@ -1,11 +1,12 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { updateOrderStatus } from "../../redux/actions/orderAction";
 import "./Order.css";
 
 const OrderCard = ({ data }) => {
+  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const updateOrderStatusFunc = async (e) => {
     const statusNow = e.target.value;
@@ -78,7 +79,11 @@ const OrderCard = ({ data }) => {
         <select
           name=""
           id=""
-          disabled={data?.orderStatus === "Cancelled" ? true : false}
+          disabled={
+            data?.orderStatus === "Cancelled" || user.role === "user"
+              ? true
+              : false
+          }
           onChange={updateOrderStatusFunc}
         >
           <option hidden>Update Order Status</option>

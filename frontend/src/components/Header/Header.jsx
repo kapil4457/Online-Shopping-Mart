@@ -6,7 +6,6 @@ import GavelOutlinedIcon from "@mui/icons-material/GavelOutlined";
 import { NavLink, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import profile from "./pp.jpg";
 import LogoutIcon from "@mui/icons-material/Logout";
 import logo from "./logo2.png";
 import { useDispatch, useSelector } from "react-redux";
@@ -204,7 +203,7 @@ const Header = () => {
         </div>
         <div className="main-side-header">
           <div className="account">
-            <p>Hello Kapil</p>
+            <p>Hello {user?.name ? user?.name : "Guest"}</p>
           </div>
           <div className="options">
             {sideBarHeadings.map((item, key) => (

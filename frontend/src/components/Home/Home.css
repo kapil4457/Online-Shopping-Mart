@@ -121,3 +121,154 @@
     text-decoration: underline;
     
 }
+
+@media all and (min-width:1500px){
+    .main-body-home{
+        padding:3rem 1rem;
+        
+    }
+    .latest-appliances, .mens-fashion, .womens-store, .deals-on-beauty,.main-body-home > .smart-tv{
+        height:30rem;
+    }
+}
+
+@media all and (max-width:1500px){
+    .main-body-home {
+        place-items:center;
+        grid-template-columns: 1fr 1fr;
+        gap:2rem;
+        padding:1rem
+    }
+    .latest-appliances,.main-body-home > .smart-tv ,.womens-store  ,.deals-on-beauty ,.mens-fashion{
+        height:30rem;
+        width: 39rem;
+    }
+
+  .block-buster{
+      width:105%;
+    }
+    
+    .block-buster>h2{
+        padding-left: 3rem;;
+    }
+    .small-card>img{
+        width:100%;
+        object-fit: fill;
+        
+    }
+    .latest-appliances > .appliances-category, .womens-clothing {
+        gap:2rem;
+        height:30rem;
+    }
+
+    .main-body-home > .latest-appliances > .appliances-category>a>img, .main-body-home > .womens-store > .womens-clothing>a>img {
+        width:14rem;
+    }
+    .mens-fashion > .categories{
+        gap:5rem;
+    }
+   
+}
+
+
+@media all and (max-width:1300px) {
+    .main-body-home{
+        grid-template-columns: 1fr;
+        padding:1rem;
+        gap:2rem;
+    }
+    
+   
+    .main-body-home > .latest-appliances {
+        width:100%;
+        height:30rem;
+
+    }
+    .main-body-home > .latest-appliances{
+        height:34rem;
+    }
+
+    .main-body-home > .womens-store{
+        width:100%;
+        height:30rem;
+    }
+    .main-body-home > .latest-appliances >
+    .appliances-category>a,.main-body-home > .womens-store >
+    .womens-clothing>a{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size:0.8rem;
+    }
+    .main-body-home > .latest-appliances >
+    .appliances-category>a>p,
+    .main-body-home > .womens-store >
+    .womens-clothing>a>p
+    {
+        width:80%;
+        font-size:1.2rem;
+    }
+    .main-body-home > .latest-appliances >
+    .appliances-category>a>img,
+    .main-body-home > .womens-store >
+    .womens-clothing>a>img
+    {
+        width:16rem;
+
+
+    }
+    .main-body-home > .smart-tv{
+        width:100%;
+    }
+    .main-body-home > .smart-tv>h2{
+        width:90%;
+    }
+    .main-body-home > .smart-tv>a>img{
+        width:100%;
+        object-fit: fill;
+    }
+
+  .mens-fashion{
+    display:none;
+  }
+
+.main-home> .block-buster>h2,.kitchen-items>h2{
+
+padding-left:2rem;
+font-size:1.5rem;
+}
+
+
+.main-body-home > .deals-on-beauty{
+display:none
+}
+
+.slider{
+    height:13rem;
+    width:100%;
+}
+.slider > .swiper{
+    width:90%;
+}
+.small-card{
+    width:10rem;
+}
+
+.small-card > img{
+    width:13rem;
+}
+}
+
+
+
+@media all and (max-width:600px){
+    .main-body-home > .latest-appliances > .appliances-category>a>img , .main-body-home > .womens-store > .womens-clothing>a>img {
+        width:8rem;
+    }
+    .main-body-home > .latest-appliances > .appliances-category>a>p,
+    .main-body-home > .womens-store > .womens-clothing>a>p{
+        width:100%;
+        font-size:1.2rem;
+    }
+}

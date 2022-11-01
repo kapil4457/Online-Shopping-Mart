@@ -18,7 +18,7 @@ const GetAllUser = () => {
       navigate("/");
       toast("You are not allowed to access this page !!");
     }
-  }, [user?.role]);
+  }, []);
 
   return (
     <div className="all-users-main">

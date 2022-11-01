@@ -96,7 +96,12 @@ const InsertPoster = () => {
               <input type="file" onChange={handleFile} />
             </div>
           </div>
-          <button onClick={posterUploader}>Add</button>
+          <button
+            onClick={posterUploader}
+            disabled={user?.role !== "admin" ? false : true}
+          >
+            Add
+          </button>
         </div>
       </div>
       <ToastContainer />

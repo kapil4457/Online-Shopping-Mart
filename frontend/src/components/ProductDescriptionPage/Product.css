@@ -20,7 +20,7 @@
     box-shadow:0px 0px 20px rgba(0,0,0,0.6) ;
     border-radius:10px;
     height:45vh;
-    width:90%;
+    width:83%;
     display:flex;
     overflow:hidden;
     position:relative;
@@ -34,11 +34,12 @@
 }
 .main-product-page > .left > .carousal >div {
     transition:all 0.3s ;
+    max-width:47rem;
 }
 .main-product-page > .left > .carousal >div >img{
-    width:47rem;
+    min-width:32rem;
     height:100%;
-    object-fit: cover;
+    object-fit: fill;
 }
 .leftBtn , .rightBtn{
     top:50%;
@@ -180,3 +181,30 @@ font-size:2.4rem;
     box-shadow: 0px 0px 10px green;
 
 }
+
+@media all and (max-width:900px){
+    .main-product-page{
+        flex-direction:column;
+        padding-top:4rem;
+        height:45rem;
+    }
+    .main-product-page> .left{
+        width:100%;
+    }
+    .rightSide{
+        padding:0;
+        gap:1rem;
+        padding-left:2rem;
+        padding-top:2rem;
+
+    }
+    .rightSide >.name, .rightSide >.desc, .rightSide >.stock, .rightSide >.price{
+        font-size: 1rem;;
+    }
+    .btnHub{
+        gap:1rem;
+    }
+}
+
+
+

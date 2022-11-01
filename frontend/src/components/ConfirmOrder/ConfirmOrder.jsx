@@ -81,7 +81,7 @@ const ConfirmOrder = () => {
               {cartItems &&
                 cartItems.map((item) => (
                   <div key={item.product}>
-                    <img src={item.image} alt="Product" />
+                    <img src={item?.images[0]?.url} alt="Product" />
                     <NavLink to={`/product/${item.product}`}>
                       {item.name}
                     </NavLink>

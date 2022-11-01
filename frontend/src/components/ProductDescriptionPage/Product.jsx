@@ -5,11 +5,13 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 import ChevronLeftOutlinedIcon from "@mui/icons-material/ChevronLeftOutlined";
 import ChevronRightOutlinedIcon from "@mui/icons-material/ChevronRightOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
+import Slider from "../Slider/Slider";
 const Product = () => {
   const params = useParams();
   const [data, setData] = useState([]);
@@ -103,8 +105,8 @@ const Product = () => {
             className="main-carousal"
             style={{ transform: `translateX(${transform}vw)` }}
           >
-            {data?.images?.map((i) => (
-              <img src={`${i.url}`} alt="" />
+            {data?.images?.map((i, key) => (
+              <img src={`${i.url}`} key={key} alt="" />
             ))}
           </div>
         </div>

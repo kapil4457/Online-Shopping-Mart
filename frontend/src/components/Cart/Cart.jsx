@@ -32,7 +32,7 @@ const Cart = () => {
 
   useEffect(() => {
     getData();
-  }, [navigate, data]);
+  }, [navigate]);
   return (
     <>
       {data.length == 0 ? (

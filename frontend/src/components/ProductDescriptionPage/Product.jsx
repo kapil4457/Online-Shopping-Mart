@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
-
+import ImageSlider from "./Slider";
 import "react-toastify/dist/ReactToastify.css";
 import ChevronLeftOutlinedIcon from "@mui/icons-material/ChevronLeftOutlined";
 import ChevronRightOutlinedIcon from "@mui/icons-material/ChevronRightOutlined";
@@ -74,42 +74,7 @@ const Product = () => {
   return (
     <div className="main-product-page">
       <div className="left">
-        <div className="carousal">
-          <div
-            className="leftBtn"
-            onClick={() => {
-              if (transform == 0) {
-                return;
-              }
-              var temp = transform;
-              temp += 40;
-              setTransform(temp);
-            }}
-          >
-            <ChevronLeftOutlinedIcon />
-          </div>
-          <div
-            className="rightBtn"
-            onClick={() => {
-              if (transform == -((data?.images?.length - 1) * 40)) {
-                return;
-              }
-              var temp = transform;
-              temp -= 40;
-              setTransform(temp);
-            }}
-          >
-            <ChevronRightOutlinedIcon />
-          </div>
-          <div
-            className="main-carousal"
-            style={{ transform: `translateX(${transform}vw)` }}
-          >
-            {data?.images?.map((i, key) => (
-              <img src={`${i.url}`} key={key} alt="" />
-            ))}
-          </div>
-        </div>
+        <ImageSlider slides={data?.images} />
       </div>
       <div className="rightSide">
         <div className="name">

@@ -15,6 +15,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
     "axios": "^1.1.2",
+    "better-react-carousel": "^1.1.1",
     "cloudinary": "^1.32.0",
     "cloudinary-core": "^2.13.0",
     "country-state-city": "^3.1.2",

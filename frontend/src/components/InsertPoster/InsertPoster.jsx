@@ -32,6 +32,7 @@ const InsertPoster = () => {
     });
   };
   const posterUploader = async () => {
+    console.log("hi");
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", "wgk9k2lo");
@@ -98,7 +99,7 @@ const InsertPoster = () => {
           </div>
           <button
             onClick={posterUploader}
-            disabled={user?.role !== "admin" ? false : true}
+            disabled={user?.role === "admin" ? false : true}
           >
             Add
           </button>

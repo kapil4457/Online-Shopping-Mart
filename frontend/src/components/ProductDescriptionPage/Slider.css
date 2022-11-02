@@ -1,4 +1,4 @@
-.slider {
+.sliderSmall {
     position: relative;
     height: 23rem;
     width:90%;
@@ -8,8 +8,9 @@
   }
   
   .image {
-    width: 1000px;
-    height: 600px;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
     border-radius: 10px;
   }
   
@@ -18,7 +19,7 @@
     top: 50%;
     right: 0;
     font-size: 3rem;
-    color: white;
+    color: red;
     z-index: 10;
     cursor: pointer;
     user-select: none;
@@ -29,18 +30,20 @@
     top: 50%;
     left: 0;
     font-size: 3rem;
-    color: white;
+    color: red;
     z-index: 10;
     cursor: pointer;
     user-select: none;
   }
   
-  .slide {
+  .disc {
     opacity: 0;
     transition:all 1s ease-in-out;
   }
-  
-  .slide.active {
+  .disc img{
+   min-width:44rem;
+  }
+  .disc.active {
     opacity: 1;
     transition-duration: 1s;
     transform: scale(1.08);

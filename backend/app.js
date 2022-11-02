@@ -8,6 +8,11 @@ app.use(cookieParser());
 var cors = require('cors')
 
 
+if(process.env.NODE_ENV !== "PRODUCTION"){
+
+	require("dotenv").config();
+}
+
 
 app.use(cors())
 app.use(express.json({limit:'50mb'}));
@@ -28,8 +33,10 @@ app.use("/api/v1/", user);
 app.use("/api/v1/", order);
 app.use("/api/v1/", poster);
 
+app.use(express.static(path.join(__dirname, "../frontend/build")));
 
-// app.use(express.static(path.join(__dirname, "../frontend/build")));
-
+app.get("*",(req,res)=>{
+    res.sendFile(path.resolve(path.join(__dirname, "../frontend/build/index.html")))
+})
 
 module.exports = app;

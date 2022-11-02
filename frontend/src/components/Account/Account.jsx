@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import Loading from "../Loader/Loading";
-import profile from "./pp.jpg";
 import { ToastContainer, toast } from "react-toastify";
 
 import "./Account.css";

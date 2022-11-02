@@ -15,8 +15,8 @@
 
 .account-main > .left-account-page > img{
     border-radius: 50%;
-    height:60%;
-    width:60%;
+    height:25rem;
+    width:25rem;
     box-shadow: 0px 0px 50px rgba(0,0,0,0.7);
     object-fit:cover;
 }
@@ -58,3 +58,37 @@
 }
 
 
+
+
+@media all and (max-width:800px){
+    .account-main{
+        grid-template-columns: 1fr;
+    }
+    .account-main > .left-account-page {
+        height:35rem;
+    }
+    .account-main > .left-account-page >img{
+        width:75%;
+    }
+}
+@media all and (max-width:420px){
+    .account-main{
+        grid-template-columns: 1fr;
+        padding-top:4rem;
+    }
+    .account-main > .left-account-page {
+        height:15rem;
+    }
+    .account-main > .left-account-page >img{
+        width:20rem;
+        height:20rem;
+    }
+    .account-main > .right-account-page{
+        gap:1.5rem;
+        padding-left:1rem;
+    }
+    .account-main > .right-account-page > div{
+        font-size:1.4rem;
+    }
+
+}

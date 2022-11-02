@@ -133,3 +133,13 @@ column-gap:1rem;
     flex-direction: column;
     gap:1rem;
 }
+
+@media all and (max-width:1000px){
+    .my-orders-main > .order-items{
+        grid-template-columns: 1fr;
+    }
+    .right-order-items{
+        border:none
+    }
+
+}

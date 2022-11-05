@@ -11,80 +11,81 @@ import logo from "./logo2.png";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/actions/userAction";
 import tempPP from "./tempPP.png";
-const sideBarHeadings = [
-  {
-    title: "Trending",
-    subDiv: [
-      {
-        subTitle: "New Release",
-        link: "/products/new",
-      },
-    ],
-  },
-  {
-    title: "Shop By Category",
-    subDiv: [
-      {
-        subTitle: "Mobiles",
-        link: "/products/Mobile",
-      },
-      {
-        subTitle: "Computers",
-        link: "/products/Computers",
-      },
-      {
-        subTitle: "Fashion",
-        link: "/products/Fashion",
-      },
-      {
-        subTitle: "Home",
-        link: "/products/Home",
-      },
-      {
-        subTitle: "Kitchen",
-        link: "/products/Kitchen",
-      },
-      {
-        subTitle: "Sports",
-        link: "/products/Sports",
-      },
-      {
-        subTitle: "Beauty",
-        link: "/products/Beauty",
-      },
-      {
-        subTitle: "Toys",
-        link: "/products/Toys",
-      },
-      {
-        subTitle: "Books",
-        link: "/products/Books",
-      },
-    ],
-  },
-  {
-    title: "Help & Settings",
-    subDiv: [
-      {
-        subTitle: "Your Account",
-        link: "/account",
-      },
-      {
-        subTitle: "Customer Services",
-        link: "/services",
-      },
-      {
-        subTitle: "Sign in",
-        link: "/login",
-      },
-    ],
-  },
-];
+
 const Header = () => {
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [searchItem, setSearchItem] = useState("");
+  const sideBarHeadings = [
+    {
+      title: "Trending",
+      subDiv: [
+        {
+          subTitle: "New Release",
+          link: "/products/new",
+        },
+      ],
+    },
+    {
+      title: "Shop By Category",
+      subDiv: [
+        {
+          subTitle: "Mobiles",
+          link: "/products/Mobile",
+        },
+        {
+          subTitle: "Computers",
+          link: "/products/Computers",
+        },
+        {
+          subTitle: "Fashion",
+          link: "/products/Fashion",
+        },
+        {
+          subTitle: "Home",
+          link: "/products/Home",
+        },
+        {
+          subTitle: "Kitchen",
+          link: "/products/Kitchen",
+        },
+        {
+          subTitle: "Sports",
+          link: "/products/Sports",
+        },
+        {
+          subTitle: "Beauty",
+          link: "/products/Beauty",
+        },
+        {
+          subTitle: "Toys",
+          link: "/products/Toys",
+        },
+        {
+          subTitle: "Books",
+          link: "/products/Books",
+        },
+      ],
+    },
+    {
+      title: "Help & Settings",
+      subDiv: [
+        {
+          subTitle: "Your Account",
+          link: "/account",
+        },
+        {
+          subTitle: "Customer Services",
+          link: "/services",
+        },
+        {
+          subTitle: user ? " " : "Sign In",
+          link: "/login",
+        },
+      ],
+    },
+  ];
 
   const sendRequest = () => {
     if (searchItem === "") {

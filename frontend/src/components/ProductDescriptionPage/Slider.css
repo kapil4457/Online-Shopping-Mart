@@ -9,8 +9,9 @@
   
   .image {
     width: 100%;
-    height: 100%;
+    height: 23rem;
     object-fit: fill;
+
     border-radius: 10px;
   }
   
@@ -40,9 +41,7 @@
     opacity: 0;
     transition:all 1s ease-in-out;
   }
-  .disc img{
-   min-width:44rem;
-  }
+
   .disc.active {
     opacity: 1;
     transition-duration: 1s;

@@ -7,15 +7,11 @@ import { useParams } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 import ImageSlider from "./Slider";
 import "react-toastify/dist/ReactToastify.css";
-import ChevronLeftOutlinedIcon from "@mui/icons-material/ChevronLeftOutlined";
-import ChevronRightOutlinedIcon from "@mui/icons-material/ChevronRightOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
-import Slider from "../Slider/Slider";
 const Product = () => {
   const params = useParams();
   const [data, setData] = useState([]);
-  const [transform, setTransform] = useState(0);
   const [quantity, setQuantity] = useState(0);
   const id = params.id;
   const getData = async () => {

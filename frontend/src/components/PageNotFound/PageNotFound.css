@@ -1,0 +1,26 @@
+.page-not-found{
+    min-height:48rem;
+    display:flex;
+    flex-direction: column;
+    gap:2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-not-found > h1{
+    font-size:4rem;
+}
+
+.page-not-found > button{
+    font-size:1.6rem;
+    border:2px solid green;
+    height:4rem;
+    width:20rem;
+    cursor:pointer;
+    color:green;
+    transition: all 0.4s;;
+}
+    .page-not-found > button:hover{
+        background-color: green;
+        color:white;
+    }

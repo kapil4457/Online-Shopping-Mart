@@ -125,7 +125,7 @@ UPDATE_ORDER_STATUS_REQUEST
                 case UPDATE_ORDER_STATUS_SUCCESS:
                 return {
                     loading: false,
-                    order: action.payload,
+                    orderStatus: action.payload,
                 };
     
             case ORDER_CANCEL_FAIL:

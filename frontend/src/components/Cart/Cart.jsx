@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import "./Cart.css";
 import CartCard from "./CartCard";
 const Cart = () => {
+  const dataRef = useRef(localStorage.getItem("cartItems"));
   const { isAuthenticated } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const [data, setData] = useState([]);
@@ -32,7 +33,8 @@ const Cart = () => {
 
   useEffect(() => {
     getData();
-  }, [navigate]);
+    console.clear();
+  }, [navigate, data]);
   return (
     <>
       {data.length == 0 ? (

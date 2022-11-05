@@ -122,15 +122,12 @@
     
 }
 
-@media all and (min-width:1500px){
-    .main-body-home{
-        padding:3rem 1rem;
-        
-    }
+/* @media all and (min-width:1500px){
+  
     .latest-appliances, .mens-fashion, .womens-store, .deals-on-beauty,.main-body-home > .smart-tv{
         height:30rem;
     }
-}
+} */
 
 @media all and (max-width:1500px){
     .main-body-home {
@@ -149,7 +146,7 @@
     }
     
     .block-buster>h2{
-        padding-left: 3rem;;
+        padding-left: 3rem;
     }
     .small-card>img{
         width:100%;

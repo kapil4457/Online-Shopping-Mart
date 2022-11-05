@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { updateOrderStatus } from "../../redux/actions/orderAction";
 import "./Order.css";
 
 const OrderCard = ({ data }) => {
+  const navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const updateOrderStatusFunc = async (e) => {
@@ -24,8 +25,13 @@ const OrderCard = ({ data }) => {
       status: statusNow,
       id: data?._id,
     };
+    toast("Please wait..Updating status...");
     dispatch(updateOrderStatus(info));
+    setTimeout(() => {
+      navigate("/admin/dashboard");
+    }, 3000);
   };
+
   return (
     <div className="order-card-main">
       <div className="left-order-card">
@@ -80,7 +86,7 @@ const OrderCard = ({ data }) => {
           name=""
           id=""
           disabled={
-            data?.orderStatus === "Cancelled" || user.role === "user"
+            data?.orderStatus === "Cancelled" || user?.role === "user"
               ? true
               : false
           }

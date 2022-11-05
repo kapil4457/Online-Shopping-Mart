@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, createPoster } from "../../redux/actions/posterAction";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router";
-
 const InsertPoster = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();

@@ -12,8 +12,8 @@ const GetAllUser = () => {
   const navigate = useNavigate();
   const { users, loading, user } = useSelector((state) => state.user);
   useEffect(() => {
-    // dispatch(loadUser());
     dispatch(getAllUser());
+    dispatch(loadUser());
     if (user?.role === "user") {
       navigate("/");
       toast("You are not allowed to access this page !!");

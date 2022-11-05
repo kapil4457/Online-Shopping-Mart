@@ -24,6 +24,8 @@ import InsertPoster from './components/InsertPoster/InsertPoster';
 import Orders from './components/Orders/Orders'
 import { getLatestPoster } from './redux/actions/posterAction';
 import GetAllUser from './components/getAllUser/GetAllUser';
+import PageNotFound from './components/PageNotFound/PageNotFound';
+
 
 // kapilsoni54768161@gmail.com
 
@@ -62,6 +64,7 @@ import GetAllUser from './components/getAllUser/GetAllUser';
     <Route path='/admin/poster' element={<InsertPoster />}  />
     <Route path='/admin/orders' element={<Orders />}  />
     <Route path='/admin/users' element={<GetAllUser />}  />
+    <Route  path="*" element={<PageNotFound />}/>
 
     
     </Routes>

@@ -9,7 +9,7 @@ exports.getAllProduct = (async (req, res, next) => {
 		const productCount =await Product.countDocuments();
        await  res.status(200).send({ success: true,  products,productCount });
     }catch(err){
-        console.log(err.message)
+		await res.status(500).send({success:false , message : err.message})
     }
 });
 

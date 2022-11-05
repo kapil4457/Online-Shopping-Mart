@@ -1,8 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router";
 import "./MyOrders.css";
 const OrderItemCard = ({ item }) => {
-  const navigate = useNavigate();
   return (
     <div className="item-card">
       <img src="logo.png" alt="" />

@@ -13,8 +13,8 @@ const Slider = ({ data }) => {
         grabCursor={true}
         modules={[FreeMode]}
         className="mySwiper"
-        slidesPerView={3}
-        spaceBetween={30}
+        slidesPerView={4}
+        spaceBetween={0}
         autoplay={true}
       >
         {data.map((item, key) => (

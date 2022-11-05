@@ -2,12 +2,13 @@ import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateUserRole } from "../../redux/actions/userAction";
 
 const UserCard = ({ data }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.user);
 
   const deleteUser = async () => {
     try {
@@ -60,7 +61,7 @@ const UserCard = ({ data }) => {
       <div className="user-card-buttons">
         <button
           onClick={deleteUser}
-          disabled={data?.role === "admin" ? false : true}
+          disabled={user?.role === "admin" ? false : true}
         >
           Delete
         </button>
@@ -68,7 +69,7 @@ const UserCard = ({ data }) => {
           name=""
           id=""
           onChange={updateUserRoleFunc}
-          disabled={data?.role === "admin" ? false : true}
+          disabled={user?.role === "admin" ? false : true}
         >
           <option hidden>Update User Role</option>
           <option value="admin">admin</option>

@@ -9,6 +9,7 @@
     display:flex;
     justify-content:center;
     align-items: center;
+    padding-left: 2rem;
 }
 
 .main-product-page > .left >.carousal> .leftBtn , .main-product-page > .left>.carousal>.rightBtn{

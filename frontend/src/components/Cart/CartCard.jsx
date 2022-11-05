@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import i1 from "./bags.jpg";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
@@ -13,7 +13,6 @@ const CartCard = ({ item }) => {
       var temp = await JSON.parse(localStorage.getItem("cartItems"));
       const filtered = await temp.filter((i) => i.id !== item.id);
       localStorage.setItem("cartItems", JSON.stringify(filtered));
-      // window.location.reload();
 
       return;
     } else {

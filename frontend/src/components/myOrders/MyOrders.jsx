@@ -71,7 +71,8 @@ const MyOrders = () => {
                         </span>
                       </div>
                     </div>
-                    {item.orderStatus === "Cancelled" ? (
+                    {item.orderStatus === "Cancelled" ||
+                    item.orderStatus === "Delivered" ? (
                       <></>
                     ) : (
                       <button
@@ -105,8 +106,6 @@ const MyOrders = () => {
                       OrderitemToDisplay?.map((item, key) => {
                         <OrderItemCard key={key} item={item} />;
                       })}
-
-                    {/* <OrderItemCard item={itemToDisplay.orderItems[0]} /> */}
                   </div>
 
                   <div className="other-info">

@@ -286,7 +286,7 @@ const ProductPage = () => {
                   key={key}
                 >
                   <NavLink to={`/products/item/${item._id}`}>
-                    <img src={item.images[0].url} alt="" />
+                    <img src={item?.images[0]?.url} alt="" />
                   </NavLink>
                   <div className="information">
                     <div className="data">

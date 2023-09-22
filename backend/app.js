@@ -29,7 +29,7 @@ app.use("/api/v1/", user);
 app.use("/api/v1/", order);
 app.use("/api/v1/", poster);
 
-app.use(express.static(path.join(__dirname, "../frontend/src")));
+app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 app.get("*", (req, res) => {
   res.sendFile(

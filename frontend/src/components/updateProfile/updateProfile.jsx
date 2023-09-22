@@ -6,8 +6,7 @@ import { NavLink } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { updateProfile } from "../../redux/actions/userAction";
 import Loading from "../Loader/Loading";
-
-import "./UpdateProfile.css";
+import "./updateProfile.css";
 const UpdateProfile = () => {
   const navigate = useNavigate();
   const { user, loading, isAuthenticated } = useSelector((state) => state.user);

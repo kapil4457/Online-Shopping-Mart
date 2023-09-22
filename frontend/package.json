@@ -37,7 +37,7 @@
   },
   "scripts": {
     "start": "node ./server.js --prefix ../backend ",
-    "build": "npm i --force && react-scripts build && npm run build --prefix ../backend",
+    "build": "npm i --force  && npm run build --prefix ../backend",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -37,9 +37,7 @@
   },
   "scripts": {
     "start": "npm start --prefix ../backend",
-    "build": "npm i --force && react-scripts build  && npm i --force --prefix ../backend",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "npm i --force && npm i --force --prefix ../backend  && react-scripts build"
   },
   "eslintConfig": {
     "extends": [
